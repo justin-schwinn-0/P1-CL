@@ -1,9 +1,9 @@
 5 6 10 100 2000 15
-0 dc41.utdallas.edu 16234 
-1 dc42.utdallas.edu 16235
-2 dc43.utdallas.edu 16236
-3 dc44.utdallas.edu 16237
-4 dc45.utdallas.edu 16238
+0 dc11.utdallas.edu 16234 
+1 dc12.utdallas.edu 16235
+2 dc13.utdallas.edu 16236
+3 dc14.utdallas.edu 16237
+4 dc15.utdallas.edu 16238
 1 4 
 0 2 3 
 1 3 
