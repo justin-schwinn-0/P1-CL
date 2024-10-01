@@ -5,13 +5,14 @@
 #include <string>
 #include <functional>
 
+#include "Node.h"
 #include "Utils.h"
 
 
 class MAP_Alg
 {
 
-    MAP_Alg();
+    MAP_Alg(Node n);
     ~MAP_Alg();
 
 
