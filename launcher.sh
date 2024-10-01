@@ -14,7 +14,7 @@ PROJDIR=/home/010/j/jt/jts200006/${PROG}
 # Directory where the config file is located on your local system
 CONFIGLOCAL=/home/justin/Desktop/code/currentProj/${CONFIGNAME}
 
-CONFIGDOCKER=/home/010/j/jt/jts200006/${PROG}/${CONFIGNAME}
+CONFIGDOCKER=/home/010/j/jt/jts200006/cs6378/${PROG}/${CONFIGNAME}
 
 # Directory your java classes are in
 BINDIR=$PROJDIR/build
