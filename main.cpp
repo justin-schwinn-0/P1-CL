@@ -190,7 +190,7 @@ void runAlg(NodeInfo& ni)
 
     if(ni.n.getUid() == 0)
     {
-        map.init();
+        //map.init();
     }
 
     ni.n.listenToNeighbors();
