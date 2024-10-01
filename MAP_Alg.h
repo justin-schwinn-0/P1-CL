@@ -8,11 +8,11 @@
 #include "Utils.h"
 
 
-class MAPAlg
+class MAP_Alg
 {
 
-    MAPAlg();
-    ~MAPAlg();
+    MAP_Alg();
+    ~MAP_Alg();
 
 
 };

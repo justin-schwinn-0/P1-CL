@@ -1,10 +1,10 @@
 #include "MAP_Alg.h"
 
 
-MAPAlg::MAPAlg()
+MAP_Alg::MAP_Alg()
 {
 }
 
-MAPAlg::~MAPAlg()
+MAP_Alg::~MAP_Alg()
 {
 }
