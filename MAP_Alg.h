@@ -11,7 +11,7 @@
 
 class MAP_Alg
 {
-
+public:
     MAP_Alg(Node n);
     ~MAP_Alg();
 
