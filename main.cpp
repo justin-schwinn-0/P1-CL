@@ -149,6 +149,24 @@ NodeInfo readConfig(std::string configFile, int popId = -1)
     {
         n.print();
     }*/
+    if(popId != -1)
+    {
+        node node;
+        for(auto n : nodes)
+        {
+            if(n.getUid() == popId)
+            {
+                node = n;
+            }
+        }   
+
+        return {minPerActive,
+                maxPerActive,
+                minSendDelay,
+                snapshotDelay,
+                maxNumber,
+                node};
+    }
 
     return {minPerActive,
             maxPerActive,
