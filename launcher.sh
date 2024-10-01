@@ -4,15 +4,15 @@
 netid=jts200006
 
 # Your main project name 
-PROG=NAME_
+PROG=P1-CL
 
-CONFIGNAME="testConfig.txt"
+CONFIGNAME="asyncConfig.txt"
 
 # Root directory of your project on the remote location
 PROJDIR=/home/010/j/jt/jts200006/${PROG}
 
 # Directory where the config file is located on your local system
-CONFIGLOCAL=/home/justin/Desktop/code/${PROG}/${CONFIGNAME}
+CONFIGLOCAL=/home/justin/Desktop/code/currentProj/${CONFIGNAME}
 
 CONFIGDOCKER=/home/010/j/jt/jts200006/${PROG}/${CONFIGNAME}
 
@@ -25,8 +25,9 @@ n=0
 cat $CONFIGLOCAL | sed -e "s/#.*//" | sed -e "/^\s*$/d" |
 (
     read i
-    echo $i
-    while [[ $n -lt $i ]]
+    ii=$( echo $i| awk '{ print $1 }' )
+    echo Hosts: $ii
+    while [[ $n -lt $ii ]]
     do
     	read line
     	p=$( echo $line | awk '{ print $1 }' )
