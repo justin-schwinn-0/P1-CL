@@ -12,7 +12,7 @@
 #include "Node.h"
 #include "Connection.h"
 #include "Utils.h"
-//#include "NAME_Alg.h"
+#include "MAP_Alg.h"
 
 struct NodeInfo
 {
