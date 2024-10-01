@@ -119,7 +119,6 @@ NodeInfo readConfig(std::string configFile, int popId = -1)
     for(int i = numNodes+1; i < lines.size(); i++)
     {
         std::string conLine = lines[i];
-        Utils::log("connection line",conLine);
         auto connections = Utils::split(conLine," ");
 
         int nearUid = i - numNodes - 1;
@@ -146,10 +145,10 @@ NodeInfo readConfig(std::string configFile, int popId = -1)
              INT_MAX});
     }*/
 
-    for(auto& n : nodes)
+    /*for(auto& n : nodes)
     {
         n.print();
-    }
+    }*/
 
     return {minPerActive,
             maxPerActive,
@@ -180,7 +179,6 @@ void runAlg(NodeInfo& ni)
     ni.n.listenToNeighbors();*/
 }
 
-    int uid;
 int main(int argc,char** argv)
 {
     Utils::log("args: ",argc);
@@ -189,6 +187,8 @@ int main(int argc,char** argv)
         int uid = std::stoi(argv[2]);
 
         auto nodeData = readConfig(argv[1],uid);
+
+        nodeData.n.print();
         
         runAlg(nodeData);
     }
