@@ -188,9 +188,9 @@ void runAlg(NodeInfo& ni)
 
     ni.n.acceptNeighbors();
 
-    if(ni.distNode == ni.n.getUid())
+    if(ni.n.getUid() == 0)
     {
-        lb.init();
+        map.init();
     }
 
     ni.n.listenToNeighbors();
