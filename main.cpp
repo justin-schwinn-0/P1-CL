@@ -151,7 +151,7 @@ NodeInfo readConfig(std::string configFile, int popId = -1)
     }*/
     if(popId != -1)
     {
-        node node;
+        Node node;
         for(auto n : nodes)
         {
             if(n.getUid() == popId)
