@@ -204,8 +204,6 @@ int main(int argc,char** argv)
 
         auto nodeData = readConfig(argv[1],uid);
 
-        nodeData.n.print();
-        
         runAlg(nodeData);
     }
     else
