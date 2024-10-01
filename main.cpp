@@ -183,7 +183,7 @@ void runAlg(NodeInfo& ni)
     MAP_Alg map(ni.n,
                 ni.minPerActive,
                 ni.maxPerActive,
-                ni.MaxNumber);
+                ni.maxNumber);
 
     //ni.n.setHandler(std::bind(&MAP_Alg::handleMsg,&map,std::placeholders::_1));
 
