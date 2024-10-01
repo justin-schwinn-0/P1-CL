@@ -185,7 +185,7 @@ void runAlg(NodeInfo& ni)
                 ni.maxPerActive,
                 ni.maxNumber);
 
-    //ni.n.setHandler(std::bind(&MAP_Alg::handleMsg,&map,std::placeholders::_1));
+    ni.n.setHandler(std::bind(&MAP_Alg::handleMsg,&map,std::placeholders::_1));
 
     ni.n.connectAll();
 
@@ -193,7 +193,7 @@ void runAlg(NodeInfo& ni)
 
     if(ni.n.getUid() == 0)
     {
-        //map.init();
+        map.init();
     }
 
     ni.n.listenToNeighbors();
