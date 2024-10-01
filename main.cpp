@@ -166,6 +166,7 @@ NodeInfo readConfig(std::string configFile, int popId = -1)
 
     }
 
+    Utils::log("returning node 0");
     return {minPerActive,
             maxPerActive,
             minSendDelay,
@@ -176,12 +177,12 @@ NodeInfo readConfig(std::string configFile, int popId = -1)
 
 void runAlg(NodeInfo& ni)
 {
-    /*ni.n.print();
+    ni.n.print();
     ni.n.openSocket();
 
-    NAME_Alg lb(ni.n);
+    MAP_Alg map(ni.n);
 
-    ni.n.setHandler(std::bind(&NAME_Alg::handleMsg,&lb,std::placeholders::_1));
+    ni.n.setHandler(std::bind(&MAP_Alg::handleMsg,&map,std::placeholders::_1));
 
     ni.n.connectAll();
 
@@ -192,12 +193,11 @@ void runAlg(NodeInfo& ni)
         lb.init();
     }
 
-    ni.n.listenToNeighbors();*/
+    ni.n.listenToNeighbors();
 }
 
 int main(int argc,char** argv)
 {
-    Utils::log("args: ",argc);
     if(argc == 3)
     {
         int uid = std::stoi(argv[2]);
