@@ -66,7 +66,7 @@ void Node::openSocket()
         return;
     }
 
-    Utils::log( "socket open!" );
+    Utils::log( "socket open on port", mListener.getPort() );
 }
 
 void Node::acceptNeighbors()
