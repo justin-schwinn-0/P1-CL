@@ -86,7 +86,7 @@ void Connection::makeConnection()
 
     if(ret < 0)
     {
-        Utils::error("connect failed "+ hostname + " " + port);
+        Utils::error("connect failed "+ hostname + " " + std::to_string(port));
     }
     else
     {
