@@ -15,7 +15,7 @@ public:
     MAP_Alg(Node n);
     ~MAP_Alg();
 
-    void handleMsg(std::string & str);
+    void handleMsg(std::string str);
 
 
 };
