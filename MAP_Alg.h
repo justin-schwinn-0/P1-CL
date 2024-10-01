@@ -15,7 +15,11 @@ public:
     MAP_Alg(Node n);
     ~MAP_Alg();
 
+    void init();
+
     void handleMsg(std::string str);
+
+
 
 
 };
