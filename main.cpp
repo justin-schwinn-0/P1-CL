@@ -156,24 +156,23 @@ NodeInfo readConfig(std::string configFile, int popId = -1)
         {
             if(n.getUid() == popId)
             {
-                node = n;
+                return {minPerActive,
+                        maxPerActive,
+                        minSendDelay,
+                        snapshotDelay,
+                        maxNumber,
+                        n};
             }
         }   
 
-        return {minPerActive,
-                maxPerActive,
-                minSendDelay,
-                snapshotDelay,
-                maxNumber,
-                node};
     }
 
     return {minPerActive,
             maxPerActive,
             minSendDelay,
             snapshotDelay,
-            maxNumber,
-            nodes[0]};
+                maxNumber,
+                nodes[0]};
 }
 
 void runAlg(NodeInfo& ni)
