@@ -180,12 +180,13 @@ void runAlg(NodeInfo& ni)
     ni.n.listenToNeighbors();*/
 }
 
+    int uid;
 int main(int argc,char** argv)
 {
-    int uid;
+    Utils::log("args: ",argc);
     if(argc == 3)
     {
-        uid = std::stoi(argv[2]);
+        int uid = std::stoi(argv[2]);
 
         auto nodeData = readConfig(argv[1],uid);
         

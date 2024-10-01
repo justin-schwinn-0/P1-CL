@@ -9,7 +9,7 @@ PROG=P1-CL
 CONFIGNAME="asyncConfig.txt"
 
 # Root directory of your project on the remote location
-PROJDIR=/home/010/j/jt/jts200006/${PROG}
+PROJDIR=/home/010/j/jt/jts200006/cs6378/${PROG}
 
 # Directory where the config file is located on your local system
 CONFIGLOCAL=/home/justin/Desktop/code/currentProj/${CONFIGNAME}
@@ -33,6 +33,7 @@ cat $CONFIGLOCAL | sed -e "s/#.*//" | sed -e "/^\s*$/d" |
     	p=$( echo $line | awk '{ print $1 }' )
         host=$( echo $line | awk '{ print $2 }' )
 	
+        echo "/${BINDIR}/${PROG} ${PROJDIR}/${CONFIGNAME} ${p};" 
 	    gnome-terminal -- ssh $netid@$host "cd ${BINDIR}/..;/${BINDIR}/${PROG} ${PROJDIR}/${CONFIGNAME} ${p};" "exec bash" &
 
         n=$(( n + 1 ))
