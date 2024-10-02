@@ -44,6 +44,7 @@ void MAP_Alg::active()
     std::uniform_int_distribution<std::mt19937::result_type> picker(0,connections.size());
 
     int numMsgs = msgNum(rng);
+    Utils::log("num sent:",numMsgs);
     while(numMsgs > 0)
     {
         int uid = picker(rng);
