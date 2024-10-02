@@ -8,6 +8,7 @@
 #include "Node.h"
 #include "Utils.h"
 
+const int ACTIVE = 500;
 
 class MAP_Alg
 {
