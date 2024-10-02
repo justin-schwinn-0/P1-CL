@@ -31,7 +31,6 @@ void MAP_Alg::becomeActive()
 {
     if(!mActive && mMsgsSent < mMaxNum )
     {
-        Utils::log("Active! sent:",mMsgsSent, "Max:",mMaxNum);
         std::thread activeThrd(&MAP_Alg::active, this);
         activeThrd.detach();
     }
@@ -58,7 +57,6 @@ void MAP_Alg::active()
     {
         int uidIndex = picker(rng);
         int uid = connections[uidIndex];
-        Utils::log("send to",uid);
         rNode.sendTo(uid,std::to_string(ACTIVE));
         std::this_thread::sleep_for(std::chrono::milliseconds(250));
         numMsgs--;
