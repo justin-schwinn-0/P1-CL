@@ -23,7 +23,7 @@ void MAP_Alg::becomeActive()
 {
     if(!mActive)
     {
-        std::thread activeThrd(MAP_Alg::active,this);
+        std::thread activeThrd(MAP_Alg::active);
         activeThrd.detach();
     }
 
