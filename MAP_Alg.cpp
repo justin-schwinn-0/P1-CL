@@ -48,6 +48,7 @@ void MAP_Alg::active()
     while(numMsgs > 0)
     {
         int uid = picker(rng);
+        Utils::log("send to",uid);
         rNode.sendTo(uid,"hello");
         std::this_thread::sleep_for(std::chrono::milliseconds(250));
         numMsgs--;
