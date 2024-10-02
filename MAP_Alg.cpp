@@ -18,7 +18,7 @@ MAP_Alg::~MAP_Alg()
 
 void MAP_Alg::handleMsg(std::string str)
 {
-    Utils::log(str);
+    //Utils::log(str);
 
     int mid = Utils::strToInt(str);
     if(mid == ACTIVE)
