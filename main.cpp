@@ -79,11 +79,11 @@ NodeInfo readConfig(std::string configFile, int popId = -1)
     else
     {
         numNodes = Utils::strToInt(firstLine[0]);
-        minPerActive = Utils::strToInt(firstLine[0]);
-        maxPerActive = Utils::strToInt(firstLine[0]);
-        minSendDelay = Utils::strToInt(firstLine[0]);
-        snapshotDelay = Utils::strToInt(firstLine[0]);
-        maxNumber = Utils::strToInt(firstLine[0]);
+        minPerActive = Utils::strToInt(firstLine[1]);
+        maxPerActive = Utils::strToInt(firstLine[2]);
+        minSendDelay = Utils::strToInt(firstLine[3]);
+        snapshotDelay = Utils::strToInt(firstLine[4]);
+        maxNumber = Utils::strToInt(firstLine[5]);
     }
 
 
