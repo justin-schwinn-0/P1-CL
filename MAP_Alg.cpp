@@ -41,7 +41,7 @@ void MAP_Alg::active()
     std::random_device dev;
     std::mt19937 rng(dev());
     std::uniform_int_distribution<std::mt19937::result_type> msgNum(mMinPerActive,mMaxPerActive);
-    std::uniform_int_distribution<std::mt19937::result_type> picker(0,connections.size());
+    std::uniform_int_distribution<std::mt19937::result_type> picker(0,connections.size()-1);
 
     int numMsgs = msgNum(rng);
     Utils::log("num sent:",numMsgs);
