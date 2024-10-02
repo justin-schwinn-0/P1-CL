@@ -7,7 +7,8 @@ MAP_Alg::MAP_Alg(Node& n,int minActive, int maxActive,int maxNum):
     rNode(n),
     mMinPerActive(minActive),
     mMaxPerActive(maxActive),
-    mMaxNum(maxNum)
+    mMaxNum(maxNum),
+    mMsgsSent(0)
 {
 }
 
