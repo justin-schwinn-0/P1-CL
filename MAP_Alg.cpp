@@ -40,6 +40,7 @@ void MAP_Alg::becomeActive()
 
 void MAP_Alg::active()
 {
+    mActive = true;
     int msgsToSend;
 
     auto connections = rNode.getConnectedUids();
