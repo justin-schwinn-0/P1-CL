@@ -20,6 +20,10 @@ public:
 
     void handleMsg(std::string str);
 
+    void becomeActive();
+
+    void active();
+
 private:
     Node& rNode;
 
