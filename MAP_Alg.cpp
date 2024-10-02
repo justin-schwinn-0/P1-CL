@@ -23,6 +23,7 @@ void MAP_Alg::becomeActive()
 {
     if(!mActive)
     {
+        Utils::log("Active!");
         std::thread activeThrd(&MAP_Alg::active, this);
         activeThrd.detach();
     }
@@ -43,5 +44,5 @@ void MAP_Alg::active()
 
 void MAP_Alg::init()
 {
-    Utils::log("init here");
+    becomeActive();
 }
