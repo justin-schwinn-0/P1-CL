@@ -41,6 +41,7 @@ void MAP_Alg::becomeActive()
 void MAP_Alg::active()
 {
     mActive = true;
+    Utils::log("Active! sent:",mMsgsSent, "Max:",mMaxNum);
     int msgsToSend;
 
     auto connections = rNode.getConnectedUids();
@@ -63,6 +64,7 @@ void MAP_Alg::active()
         numMsgs--;
         mMsgsSent++;
     }
+    Utils::log("Passive! sent:",mMsgsSent, "Max:",mMaxNum);
     mActive = false;
 }
 
