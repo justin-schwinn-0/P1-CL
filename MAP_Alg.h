@@ -33,6 +33,8 @@ private:
 
     int mMaxNum;
 
+    int mMsgsSent;
+
 
 
 };

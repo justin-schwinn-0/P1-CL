@@ -1,5 +1,6 @@
 #include "MAP_Alg.h"
 
+#include <random>
 #include <thread>
 
 MAP_Alg::MAP_Alg(Node& n,int minActive, int maxActive,int maxNum):
@@ -21,9 +22,9 @@ void MAP_Alg::handleMsg(std::string str)
 
 void MAP_Alg::becomeActive()
 {
-    if(!mActive)
+    if(!mActive && mMsgsSent < mMaxNum )
     {
-        Utils::log("Active!");
+        Utils::log("Active! sent:",mMsgsSent, "Max:",mMaxNum);
         std::thread activeThrd(&MAP_Alg::active, this);
         activeThrd.detach();
     }
@@ -32,12 +33,12 @@ void MAP_Alg::becomeActive()
 
 void MAP_Alg::active()
 {
-    rNode.flood("hello");
-    std::this_thread::sleep_for(std::chrono::milliseconds(250));
-    rNode.flood("hello");
-    std::this_thread::sleep_for(std::chrono::milliseconds(250));
-    rNode.flood("hello");
-    std::this_thread::sleep_for(std::chrono::milliseconds(250));
+    int msgsToSend;
+
+    std::random_device dev;
+    std::mt19937 rng(dev());
+    std::uniform_int_distribution<std::mt19937::result_type> dist6(0,rNode.getNumNeighbors());
+
     rNode.flood("hello");
     std::this_thread::sleep_for(std::chrono::milliseconds(250));
 }
