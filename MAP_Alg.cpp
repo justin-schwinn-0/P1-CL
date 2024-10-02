@@ -35,12 +35,23 @@ void MAP_Alg::active()
 {
     int msgsToSend;
 
+    auto connections = rNode.getConnectedUids();
+
     std::random_device dev;
     std::mt19937 rng(dev());
-    std::uniform_int_distribution<std::mt19937::result_type> dist6(0,rNode.getConnectedUids().size());
+    std::uniform_int_distribution<std::mt19937::result_type> msgNum(mMinPerActive,mMaxPerActive);
+    std::uniform_int_distribution<std::mt19937::result_type> picker(0,connections.size());
 
-    rNode.flood("hello");
-    std::this_thread::sleep_for(std::chrono::milliseconds(250));
+    int numMsgs = msgNum(rng);
+    while(numMsgs > 0)
+    {
+        int uid = picker(rng);
+        rNode.sendMsg(uid,"hello");
+        std::this_thread::sleep_for(std::chrono::milliseconds(250));
+        numMsgs--;
+    }
+    
+
 }
 
 void MAP_Alg::init()
