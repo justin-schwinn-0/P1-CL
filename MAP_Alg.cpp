@@ -37,7 +37,7 @@ void MAP_Alg::active()
 
     std::random_device dev;
     std::mt19937 rng(dev());
-    std::uniform_int_distribution<std::mt19937::result_type> dist6(0,rNode.getNumNeighbors());
+    std::uniform_int_distribution<std::mt19937::result_type> dist6(0,rNode.getConnectedUids().size());
 
     rNode.flood("hello");
     std::this_thread::sleep_for(std::chrono::milliseconds(250));
