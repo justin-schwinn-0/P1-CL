@@ -53,6 +53,7 @@ void MAP_Alg::active()
         rNode.sendTo(uid,"hello");
         std::this_thread::sleep_for(std::chrono::milliseconds(250));
         numMsgs--;
+        mMsgsSent++;
     }
     
 
