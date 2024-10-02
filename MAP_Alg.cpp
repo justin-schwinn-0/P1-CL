@@ -44,7 +44,7 @@ void MAP_Alg::active()
     std::uniform_int_distribution<std::mt19937::result_type> picker(0,connections.size()-1);
 
     int numMsgs = msgNum(rng);
-    int numMsgs = std::min(numMsgs, mMaxNum-mMsgsSent);
+    numMsgs = std::min(numMsgs, mMaxNum-mMsgsSent);
     Utils::log("num sent:",numMsgs);
     while(numMsgs > 0)
     {
