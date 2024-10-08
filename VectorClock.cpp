@@ -37,7 +37,7 @@ std::string VectorClock::to_string()
         it++;
         if(it != mClockMap.end())
         {
-            out += "||";
+            out += VC_DELIM;
         }
     }while (it != mClockMap.end());
 
@@ -47,8 +47,9 @@ std::string VectorClock::to_string()
 
 void VectorClock::update(int sender, std::string str)
 {
-    auto splits = Utils::split(str,"||");
+    auto splits = Utils::split(str,VC_DELIM);
 
+    Utils::log(to_string());
     for(auto pairStr : splits)
     {
         auto splitPair = Utils::split(pairStr,",");
@@ -58,4 +59,5 @@ void VectorClock::update(int sender, std::string str)
 
         mClockMap[uid] = std::max(val, mClockMap[uid]);
     }
+    Utils::log(str);
 }
