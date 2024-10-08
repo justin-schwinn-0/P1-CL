@@ -37,7 +37,7 @@ std::string VectorClock::to_string()
             out += "||";
         }
         it++;
-    }while (it != mClockMap.end())
+    }while (it != mClockMap.end());
 
     return "()";
 }
