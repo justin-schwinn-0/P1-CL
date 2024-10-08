@@ -81,7 +81,7 @@ void MAP_Alg::active()
 
 void MAP_Alg::sendProtocolMessage(int uid,std::string str)
 {
-    std::string msg = std::to_string(rNode.getUid()) + "&&" + mVc.to_string() + "&&" + str
+    std::string msg = std::to_string(rNode.getUid()) + "&&" + mVc.to_string() + "&&" + str;
     rNode.sendTo(uid,msg);
 }
 
