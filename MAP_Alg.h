@@ -7,6 +7,7 @@
 
 #include "Node.h"
 #include "Utils.h"
+#include "VectorClock.h"
 
 const int ACTIVE = 500;
 
@@ -34,6 +35,8 @@ private:
     int mMaxNum;
 
     int mMsgsSent;
+
+    VectorClock vc;
 
 
 

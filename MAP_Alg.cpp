@@ -8,8 +8,10 @@ MAP_Alg::MAP_Alg(Node& n,int minActive, int maxActive,int maxNum):
     mMinPerActive(minActive),
     mMaxPerActive(maxActive),
     mMaxNum(maxNum),
-    mMsgsSent(0)
+    mMsgsSent(0),
+    mVc({0,1,2,3,4},rNode.getUid())
 {
+    Utils::log(mVc.to_string());
 }
 
 MAP_Alg::~MAP_Alg()
