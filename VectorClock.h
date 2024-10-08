@@ -1,7 +1,6 @@
 #ifndef VECTOR_CLOCK_H
 #define VECTOR_CLOCK_H
 
-#include <map>
 #include <vector>
 #include <string>
 
@@ -25,7 +24,7 @@ private:
 
     int mSession;
 
-    std::map<int,int> mClockMap;
+    std::vector<std::pair<int,int>> mClockMap;
 };
 
 #endif

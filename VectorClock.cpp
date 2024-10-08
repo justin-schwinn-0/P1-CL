@@ -9,6 +9,10 @@ VectorClock::VectorClock(std::vector<int> uids,int session):
     }
 }
 
+VectorClock::~VectorClock()
+{
+}
+
 void VectorClock::increment()
 {
     mClockMap[mSession]++;
@@ -21,5 +25,19 @@ void VectorClock::compare(int session)
 
 std::string VectorClock::to_string()
 {
+    std::string out ="";
+
+    auto it = mClockMap.begin();
+    do
+    {
+        out += std::to_string(it->first) + "," + 
+                std::to_string(itr->second);
+        if((it+1) != mClockMap.end())
+        {
+            out += "||";
+        }
+        it++;
+    }while (it != mClockMap.end())
+
     return "()";
 }
