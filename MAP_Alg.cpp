@@ -11,7 +11,6 @@ MAP_Alg::MAP_Alg(Node& n,int minActive, int maxActive,int maxNum):
     mMsgsSent(0),
     mVc({0,1,2,3,4},rNode.getUid())
 {
-    Utils::log(mVc.to_string());
 }
 
 MAP_Alg::~MAP_Alg()
@@ -63,8 +62,10 @@ void MAP_Alg::active()
         std::this_thread::sleep_for(std::chrono::milliseconds(250));
         numMsgs--;
         mMsgsSent++;
+        mVc.increment();
     }
     Utils::log("Passive! sent:",mMsgsSent, "Max:",mMaxNum);
+    Utils::log("VC:",mVc.to_string());
     mActive = false;
 }
 
