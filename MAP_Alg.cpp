@@ -19,7 +19,7 @@ MAP_Alg::~MAP_Alg()
 
 void MAP_Alg::handleMsg(std::string str)
 {
-    Utils::log(str);
+    //Utils::log(str);
 
     auto splitMsg = Utils::split(str,"&&");
 
