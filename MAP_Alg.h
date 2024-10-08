@@ -25,7 +25,7 @@ public:
 
     void active();
 
-    void sendProtocolMessage();
+    void sendProtocolMessage(int uid, std::string str);
 
 private:
     Node& rNode;
