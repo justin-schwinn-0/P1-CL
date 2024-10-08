@@ -36,9 +36,7 @@ private:
 
     int mMsgsSent;
 
-    VectorClock vc;
-
-
+    VectorClock mVc;
 
 };
 
