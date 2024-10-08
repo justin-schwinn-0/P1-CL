@@ -1,5 +1,7 @@
 #include "VectorClock.h"
 
+#include "Utils.h"
+
 VectorClock::VectorClock(std::vector<int> uids,int session):
     mSession(session)
 {
