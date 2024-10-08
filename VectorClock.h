@@ -24,7 +24,7 @@ private:
 
     int mSession;
 
-    std::vector<std::pair<int,int>> mClockMap;
+    std::map<int,int> mClockMap;
 };
 
 #endif
