@@ -12,6 +12,7 @@ set(Sources
     Connection.cpp
     MAP_Alg.cpp
     Utils.cpp
+    VectorClock.cpp
 )
 
 set(Headers
@@ -19,6 +20,7 @@ set(Headers
     Connection.h
     MAP_Alg.h
     Utils.h
+    VectorClock.h
 )
 
 find_library(SCTP_LIB libsctp.so)
