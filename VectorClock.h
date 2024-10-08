@@ -21,6 +21,8 @@ public:
 
     std::string to_string();
 
+    void update(int sender, std::string str);
+
 private:
 
     int mSession;

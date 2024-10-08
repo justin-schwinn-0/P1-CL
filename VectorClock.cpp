@@ -41,3 +41,19 @@ std::string VectorClock::to_string()
 
     return out;
 }
+
+
+void VectorClock::update(int sender, std::string str)
+{
+    auto splits = Utils::split(str,"||");
+
+    for(auto pairStr : splits)
+    {
+        auto splitPair = Utils::split(pairStr,",");
+
+        int uid = Utils::strToInt(splitPair[0]);
+        int val = Utils::strToInt(splitPair[1]) + (uid == sender);
+
+        mClockMap[uid] = std::max(val, mClockMap[uid]);
+    }
+}
