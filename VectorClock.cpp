@@ -49,7 +49,7 @@ void VectorClock::update(int sender, std::string str)
 {
     auto splits = Utils::split(str,VC_DELIM);
 
-    Utils::log("m",to_string());
+    //Utils::log("m",to_string());
     for(auto pairStr : splits)
     {
         auto splitPair = Utils::split(pairStr,",");
@@ -59,5 +59,5 @@ void VectorClock::update(int sender, std::string str)
 
         mClockMap[uid] = std::max(val, mClockMap[uid]);
     }
-    Utils::log("o",str);
+    //Utils::log("o",str);
 }
