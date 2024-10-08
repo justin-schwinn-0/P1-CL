@@ -10,7 +10,7 @@ class VectorClock
 {
 
 public:
-    VectorClock(int session);
+    VectorClock(std::vector<int> uids,int session);
     ~VectorClock();
 
     void rxVectorClock(std::string clk);
