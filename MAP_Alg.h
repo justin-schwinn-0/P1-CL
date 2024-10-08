@@ -25,6 +25,8 @@ public:
 
     void active();
 
+    void sendProtocolMessage();
+
 private:
     Node& rNode;
 
