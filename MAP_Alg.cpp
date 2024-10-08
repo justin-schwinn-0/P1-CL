@@ -23,13 +23,12 @@ void MAP_Alg::handleMsg(std::string str)
 
     auto splitMsg = Utils::split(str,"&&");
 
-    std::string strUid =splitMsg[0];
+    int otherUid =Utils::strToInt(splitMsg[0]);
     std::string strVc =splitMsg[1];
     std::string msg =splitMsg[2];
 
 
-    Utils::log("from uid:",strUid);
-    Utils::log("other Vc:",strVc);
+    mVc.update(otherUid,strVc);
 
     int mid = Utils::strToInt(msg);
     if(mid == ACTIVE)
