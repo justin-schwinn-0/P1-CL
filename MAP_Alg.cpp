@@ -19,9 +19,19 @@ MAP_Alg::~MAP_Alg()
 
 void MAP_Alg::handleMsg(std::string str)
 {
-    //Utils::log(str);
+    Utils::log(str);
 
-    int mid = Utils::strToInt(str);
+    auto splitMsg = Utils::split(str,"&&");
+
+    std::string strUid =splitMsg[0];
+    std::string strVc =splitMsg[1];
+    std::string msg =splitMsg[2];
+
+
+    Utils::log("from uid:",strUid);
+    Utils::log("other Vc:",strVc);
+
+    int mid = Utils::strToInt(msg);
     if(mid == ACTIVE)
     {
         becomeActive();
@@ -58,7 +68,6 @@ void MAP_Alg::active()
     {
         int uidIndex = picker(rng);
         int uid = connections[uidIndex];
-        rNode.sendTo(uid,std::to_string(ACTIVE));
         std::this_thread::sleep_for(std::chrono::milliseconds(250));
         numMsgs--;
         mMsgsSent++;
@@ -67,6 +76,12 @@ void MAP_Alg::active()
     Utils::log("Passive! sent:",mMsgsSent, "Max:",mMaxNum);
     Utils::log("VC:",mVc.to_string());
     mActive = false;
+}
+
+void MAP_Alg::sendProtocolMessage(int uid,std::string str)
+{
+    std::string msg = std::to_string(rNode.getUid()) + "&&" + mVc.to_string() + "&&" + str
+    rNode.sendTo(uid,msg);
 }
 
 void MAP_Alg::init()
