@@ -5,7 +5,8 @@ Snapshotter::Snapshotter(NodeInfo& ni):
             ni.minPerActive,
             ni.maxPerActive,
             ni.maxNumber),
-    rNode(ni.n)
+    rNode(ni.n),
+    mParent(-1)
 {
 
 }
