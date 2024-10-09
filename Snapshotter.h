@@ -40,7 +40,7 @@ private:
 
     bool mChannelEmpty;
 
-    std::map<int,bool> mWaitingMap;
+    std::map<int,bool> mRecordingMap;
 
     int mParent;
 };
