@@ -80,7 +80,7 @@ bool Snapshotter::anyRecording()
 {
     bool out = false;
 
-    for(bool val : mRxMarkMap)
+    for(auto [id,val] : mRxMarkMap)
     {
         out = val || out;
     }
