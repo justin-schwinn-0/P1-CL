@@ -90,7 +90,7 @@ bool Snapshotter::anyRecording()
 
 void Snapshotter::createTree()
 {
-    rNode.flood(getParentStr());
+    rNode.flood(getCtrlStr(PARENT));
 }
 std::string Snapshotter::getCtrlStr(int ctrlMsgId)
 {
