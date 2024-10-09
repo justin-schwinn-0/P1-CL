@@ -31,6 +31,8 @@ public:
     void createTree();
 
     void handleParent(int uid);
+    void handleChild(int uid);
+    void handleRef(int uid);
     void handleMarker(int uid);
     void handleAppMsg(int uid);
     bool converge();
