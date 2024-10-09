@@ -31,7 +31,7 @@ void Snapshotter::handleMsg(std::string msg)
             handleParent(uid);
             break;
         case MARKER:
-            handleMarker();
+            handleMarker(uid);
             break;
         default:
             Utils::log("Unknown message!",msgId);
