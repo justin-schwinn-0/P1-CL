@@ -6,7 +6,8 @@ Snapshotter::Snapshotter(NodeInfo& ni):
             ni.maxPerActive,
             ni.maxNumber),
     rNode(ni.n),
-    mParent(-1)
+    mParent(-1),
+    mSnapshotDelay(ni.snapshotDelay)
 {
 
 }
@@ -132,4 +133,13 @@ void Snapshotter::createTree()
 std::string Snapshotter::getCtrlStr(int ctrlMsgId)
 {
     return std::to_string(rNode.getUid()) + APP_DELIM + std::to_string(ctrlMsgId);
+}
+
+void Snapshotter::snapshotTimer()
+{
+    while(mIncomplete)
+    {
+        std::this_thread::sleep_for(std::chrono::milliseconds(mSnapshotDelay));
+        startSnapshot();
+    }
 }

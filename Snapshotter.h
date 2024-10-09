@@ -43,6 +43,7 @@ private:
     std::map<int,bool> mRecordingMap;
 
     int mParent;
+    int mSnapshotDelay = 10000;
 };
 
 #endif
