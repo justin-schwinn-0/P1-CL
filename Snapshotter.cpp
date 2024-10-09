@@ -17,16 +17,55 @@ Snapshotter::~Snapshotter()
 
 void Snapshotter::handleMsg(std::string msg)
 {
-    Utils::log("tunnel through snapshotter");
 
-    mMap.handleMsg(msg);
+    //mMap.handleMsg(msg);
+    auto splits = Utils::split(msg, CTRL_DELIM);
+
+    int uid = Utils::strToInt(splits[0]);
+    int msgId = Utils::strToInt(splits[1]); 
+
+    switch(msgId)
+    {
+        case PARENT:
+            handleParent(uid);
+            break;
+        default:
+            Utils::log("Unknown message!");
+            break;
+    }
 }
 
 void Snapshotter::startSnapshot()
 {
+    
 }
 
 void Snapshotter::init()
 {
-    mMap.init();
+    //mMap.init();
+
+    createTree();
+}
+
+void Snapshotter::handleParent(int uid)
+{
+    if(mParent == -1)
+    {
+        mParent = uid;
+        // send child ack to parent
+    }
+    else
+    {
+        // send ref ack to parent
+
+    }
+}
+
+void Snapshotter::createTree()
+{
+    rNode.flood(getParentStr());
+}
+std::string Snapshotter::getParentStr()
+{
+    return std::to_string(rNode.getUid()) + CTRL_DELIM + std::to_string(PARENT);
 }

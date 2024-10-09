@@ -8,6 +8,14 @@
 #include "Utils.h"
 #include "MAP_Alg.h"
 
+const std::string CTRL_DELIM = "**";
+
+const int MARKER = 1000;
+const int PARENT = 1001;
+const int CHILD = 1002;
+const int REF = 1003;
+
+
 class Snapshotter
 {
 public:
@@ -19,6 +27,10 @@ public:
     void startSnapshot();
 
     void init();
+
+    std::string getParentStr();
+
+    void handleParent(int uid);
 
 private:
     MAP_Alg mMap;
