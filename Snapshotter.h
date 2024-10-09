@@ -33,6 +33,7 @@ public:
     void handleMarker(int uid);
     void handleAppMsg(int uid);
     bool anyRecording();
+    void snapshotTimer();
 
 private:
     MAP_Alg mMap;
