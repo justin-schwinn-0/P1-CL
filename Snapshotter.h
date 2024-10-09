@@ -8,8 +8,6 @@
 #include "Utils.h"
 #include "MAP_Alg.h"
 
-const std::string CTRL_DELIM = "**";
-
 const int MARKER = 1000;
 const int PARENT = 1001;
 const int REPORT = 1002;

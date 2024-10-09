@@ -11,7 +11,6 @@
 
 const int ACTIVE = 500;
 
-const std::string APP_DELIM = "&&"
 
 class MAP_Alg
 {

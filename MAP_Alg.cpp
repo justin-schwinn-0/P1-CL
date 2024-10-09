@@ -21,7 +21,7 @@ void MAP_Alg::handleMsg(std::string str)
 {
     //Utils::log(str);
 
-    auto splitMsg = Utils::split(str,"&&");
+    auto splitMsg = Utils::split(str,APP_DELIM);
 
     int otherUid =Utils::strToInt(splitMsg[0]);
     std::string strVc =splitMsg[1];
@@ -85,7 +85,7 @@ bool MAP_Alg::isActive()
 
 void MAP_Alg::sendProtocolMessage(int uid,std::string str)
 {
-    std::string msg = std::to_string(rNode.getUid()) + "&&" + mVc.to_string() + "&&" + str;
+    std::string msg = std::to_string(rNode.getUid()) + APP_DELIM + mVc.to_string() + APP_DELIM + str;
     rNode.sendTo(uid,msg);
 }
 
