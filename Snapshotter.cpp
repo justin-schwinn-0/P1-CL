@@ -23,3 +23,5 @@ void Snapshotter::handleMsg(std::string msg)
 void Snapshotter::startSnapshot()
 {
 }
+
+void init();

@@ -12,7 +12,7 @@
 #include "Node.h"
 #include "Connection.h"
 #include "Utils.h"
-#include "MAP_Alg.h"
+#include "Snapshotter.h"
 
 NodeInfo readConfig(std::string configFile, int popId = -1)
 {
