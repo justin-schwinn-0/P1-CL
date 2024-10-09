@@ -53,6 +53,8 @@ private:
     int mParent;
     int mSnapshotDelay = 10000;
     bool mIncomplete = true;
+
+    int mChildren = 0;
 };
 
 #endif

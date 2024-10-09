@@ -60,6 +60,7 @@ void Snapshotter::startSnapshot()
 {
     rNode.flood(getCtrlStr(MARKER));
     mChannelEmpty = true;
+    mConvergesRemaining = mChildren;
 
     for(int uid : rNode.getConnectedUids())
     {
@@ -99,6 +100,7 @@ void Snapshotter::handleChild(int uid)
 {
     Utils::log("child is",uid);
     convergeForChild();
+    mChildren++;
 }
 
 void Snapshotter::handleRef(int uid)
@@ -147,16 +149,12 @@ void Snapshotter::convergeForChild()
     if(converge())
     {
         rNode.sendTo(mParent,getCtrlStr(CHILD));
-    }
-    else
-    {
-        Utils::log("didn't converge");
+        Utils::log("converged");
     }
 }
 
 bool Snapshotter::converge()
 {
-    Utils::log("try converge",mConvergesRemaining);
     mConvergesRemaining--;
     if(mConvergesRemaining == 0)
     {
