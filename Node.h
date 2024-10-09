@@ -75,4 +75,13 @@ private:
     int leader;
 };
 
+struct NodeInfo
+{
+    int minPerActive;
+    int maxPerActive;
+    int minSendDelay;
+    int snapshotDelay;
+    int maxNumber;
+    Node n;
+};
 #endif

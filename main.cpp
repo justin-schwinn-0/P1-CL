@@ -14,16 +14,6 @@
 #include "Utils.h"
 #include "MAP_Alg.h"
 
-struct NodeInfo
-{
-    int minPerActive;
-    int maxPerActive;
-    int minSendDelay;
-    int snapshotDelay;
-    int maxNumber;
-    Node n;
-};
-
 NodeInfo readConfig(std::string configFile, int popId = -1)
 {
     std::ifstream file(configFile) ;
@@ -180,12 +170,9 @@ void runAlg(NodeInfo& ni)
     ni.n.print();
     ni.n.openSocket();
 
-    MAP_Alg map(ni.n,
-                ni.minPerActive,
-                ni.maxPerActive,
-                ni.maxNumber);
+    Snapshotter s(ni);
 
-    ni.n.setHandler(std::bind(&MAP_Alg::handleMsg,&map,std::placeholders::_1));
+    ni.n.setHandler(std::bind(&Snapshotter::handleMsg,&s,std::placeholders::_1));
 
     ni.n.connectAll();
 
@@ -193,7 +180,7 @@ void runAlg(NodeInfo& ni)
 
     if(ni.n.getUid() == 0)
     {
-        map.init();
+        s.init();
     }
 
     ni.n.listenToNeighbors();
