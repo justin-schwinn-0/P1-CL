@@ -141,7 +141,7 @@ void Snapshotter::convergeForChild()
 bool Snapshotter::converge()
 {
     mConvergesRemaining--;
-    if(mConveregsRemaining == 0)
+    if(mConvergesRemaining == 0)
     {
         return true;
     }
