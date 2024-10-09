@@ -99,6 +99,8 @@ void Snapshotter::handleMarker(int uid)
         {
             Utils::log("protocol still active!");
         }
+
+        Utils::log(mMap.getVectorClock());
     }
 }
 
