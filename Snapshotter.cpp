@@ -20,32 +20,41 @@ void Snapshotter::handleMsg(std::string msg)
 {
 
     //mMap.handleMsg(msg);
-    auto splits = Utils::split(msg, CTRL_DELIM);
+    auto splits = Utils::split(msg, APP_DELIM);
 
-    int uid = Utils::strToInt(splits[0]);
-    int msgId = Utils::strToInt(splits[1]); 
-
-    switch(msgId)
+    if(splits.size() == 2)
     {
-        case PARENT:
-            handleParent(uid);
-            break;
-        case MARKER:
-            handleMarker(uid);
-            break;
-        default:
-            Utils::log("Unknown message!",msgId);
-            break;
+        int uid = Utils::strToInt(splits[0]);
+        int msgId = Utils::strToInt(splits[1]); 
+
+        switch(msgId)
+        {
+            case PARENT:
+                handleParent(uid);
+                break;
+            case MARKER:
+                handleMarker(uid);
+                break;
+            default:
+                Utils::log("Unknown message!",msgId);
+                break;
+        }
+    }
+    else if(splits.size() == 3)
+    {
+        int uid = Utils::strToInt(splits[0]);
+        handleAppMsg()
     }
 }
 
 void Snapshotter::startSnapshot()
 {
     rNode.flood(getCtrlStr(MARKER));
+    mChannelEmpty = true;
 
     for(int uid : rNode.getConnectedUids())
     {
-        mWaitingMap[uid] = true;
+        mRecordingMap[uid] = true;
     }
     
 }
@@ -81,7 +90,7 @@ void Snapshotter::handleMarker(int uid)
     }
 
     //any mark means we have recieved a mark from that uid
-    mWaitingMap[uid] = false;
+    mRecordingMap[uid] = false;
 
     if(!anyRecording())
     {
@@ -89,11 +98,19 @@ void Snapshotter::handleMarker(int uid)
     }
 }
 
+void Snapshotter::handleAppMsg(int uid)
+{
+    if(mRecordingMap[uid])
+    {
+        mChannelEmpty = false;
+    }
+}
+
 bool Snapshotter::anyRecording()
 {
     bool out = false;
 
-    for(auto it : mWaitingMap)
+    for(auto it : mRecordingMap)
     {
         out = it.second || out;
     }

@@ -11,6 +11,8 @@
 
 const int ACTIVE = 500;
 
+const std::string APP_DELIM = "&&"
+
 class MAP_Alg
 {
 public:
@@ -26,6 +28,8 @@ public:
     void active();
 
     void sendProtocolMessage(int uid, std::string str);
+
+    bool isActive();
 
 private:
     Node& rNode;

@@ -39,6 +39,8 @@ private:
     MAP_Alg mMap;
     Node& rNode;
 
+    bool mChannelEmpty;
+
     std::map<int,bool> mWaitingMap;
 
     int mParent;

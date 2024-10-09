@@ -78,6 +78,11 @@ void MAP_Alg::active()
     mActive = false;
 }
 
+bool MAP_Alg::isActive()
+{
+    return mActive;
+}
+
 void MAP_Alg::sendProtocolMessage(int uid,std::string str)
 {
     std::string msg = std::to_string(rNode.getUid()) + "&&" + mVc.to_string() + "&&" + str;
