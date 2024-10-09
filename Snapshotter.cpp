@@ -43,7 +43,7 @@ void Snapshotter::handleMsg(std::string msg)
     else if(splits.size() == 3)
     {
         int uid = Utils::strToInt(splits[0]);
-        handleAppMsg()
+        handleAppMsg(uid);
     }
 }
 
