@@ -34,6 +34,12 @@ void Snapshotter::handleMsg(std::string msg)
             case PARENT:
                 handleParent(uid);
                 break;
+            case CHILD:
+                handleChild(uid);
+                break;
+            case REF:
+                handleRef(uid);
+                break;
             case MARKER:
                 handleMarker(uid);
                 break;
@@ -90,11 +96,15 @@ void Snapshotter::handleParent(int uid)
 
 void Snapshotter::handleChild(int uid)
 {
+    Utils::log("child is",uid);
+    convergeForChild();
 }
 
 void Snapshotter::handleRef(int uid)
 {
+    convergeForChild();
 }
+
 void Snapshotter::handleMarker(int uid)
 {
     if(!anyRecording())
