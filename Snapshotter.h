@@ -33,6 +33,7 @@ public:
 
     void handleParent(int uid);
     void handleMarker(int uid);
+    bool anyRecording();
 
 private:
     MAP_Alg mMap;

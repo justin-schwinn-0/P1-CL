@@ -72,7 +72,7 @@ void Snapshotter::handleMarker(int uid)
 {
     if(!anyRecording())
     {
-        startSnapshot()
+        startSnapshot();
     }
 }
 
