@@ -78,10 +78,23 @@ void Snapshotter::handleParent(int uid)
     {
         mParent = uid;
         rNode.sendExcept(uid,getCtrlStr(PARENT));
+        mConvergesRemaining = rnode.getNeighborsSize() -1;
         Utils::log("parent is",mParent);
+    }
+    else
+    {
+        // send ref
+        rNode.sendTo(uid,getCtrlStr(REF));
     }
 }
 
+void Snapshotter::handleChild(int uid)
+{
+}
+
+void Snapshotter::handleRef(int uid)
+{
+}
 void Snapshotter::handleMarker(int uid)
 {
     if(!anyRecording())
@@ -115,6 +128,24 @@ void Snapshotter::handleAppMsg(int uid)
         mChannelEmpty = false;
         Utils::log("message in channel!");
     }
+}
+
+void convergeForChild()
+{
+    if(converge())
+    {
+        rNode.sendTo(mParent,getCtrlStr(CHILD));
+    }
+}
+
+bool Snapshotter::converge()
+{
+    mConveregsRemaining--;
+    if(mConveregsRemaining == 0)
+    {
+        return true;
+    }
+    return false;
 }
 
 bool Snapshotter::anyRecording()

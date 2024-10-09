@@ -10,7 +10,8 @@
 
 const int MARKER = 1000;
 const int PARENT = 1001;
-const int REPORT = 1002;
+const int CHILD = 1002;
+const int REF = 1003;
 
 
 class Snapshotter
@@ -32,12 +33,15 @@ public:
     void handleParent(int uid);
     void handleMarker(int uid);
     void handleAppMsg(int uid);
+    bool converge();
     bool anyRecording();
     void snapshotTimer();
 
 private:
     MAP_Alg mMap;
     Node& rNode;
+
+    int mConvergesRemaining = -1;
 
     bool mChannelEmpty;
 
