@@ -83,6 +83,11 @@ bool MAP_Alg::isActive()
     return mActive;
 }
 
+std::string MAP_Alg::getVectorClock()
+{
+    return mVc.to_string();
+}
+
 void MAP_Alg::sendProtocolMessage(int uid,std::string str)
 {
     std::string msg = std::to_string(rNode.getUid()) + APP_DELIM + mVc.to_string() + APP_DELIM + str;

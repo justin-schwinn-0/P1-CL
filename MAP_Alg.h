@@ -30,6 +30,8 @@ public:
 
     bool isActive();
 
+    std::string getVectorClock();
+
 private:
     Node& rNode;
 

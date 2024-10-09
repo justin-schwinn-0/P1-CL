@@ -5,7 +5,7 @@
 #include <string>
 #include <map>
 
-const std::string VC_DELIM = "|";
+const std::string VC_DELIM = " ";
 
 class VectorClock
 {
