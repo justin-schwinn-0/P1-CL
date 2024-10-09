@@ -31,6 +31,7 @@ public:
 
     void handleParent(int uid);
     void handleMarker(int uid);
+    void handleAppMsg(int uid);
     bool anyRecording();
 
 private:
