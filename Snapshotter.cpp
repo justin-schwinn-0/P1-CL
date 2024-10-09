@@ -98,15 +98,17 @@ void Snapshotter::handleParent(int uid)
 
 void Snapshotter::handleChild(int uid)
 {
+    Utils::log("childs",mChildren);
     Utils::log("child is",uid);
     convergeForChild();
     mChildren++;
+    Utils::log("childs",mChildren);
 }
 
 void Snapshotter::handleRef(int uid)
 {
-    convergeForChild();
     Utils::log("ref is", uid);
+    convergeForChild();
 }
 
 void Snapshotter::handleMarker(int uid)
