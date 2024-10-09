@@ -30,7 +30,7 @@ void Snapshotter::handleMsg(std::string msg)
             handleParent(uid);
             break;
         default:
-            Utils::log("Unknown message!");
+            Utils::log("Unknown message!",msgId);
             break;
     }
 }
@@ -53,6 +53,7 @@ void Snapshotter::handleParent(int uid)
     {
         mParent = uid;
         // send child ack to parent
+        rNode.sendExcept(uid,getParentStr());
     }
     else
     {
