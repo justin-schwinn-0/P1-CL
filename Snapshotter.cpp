@@ -44,7 +44,7 @@ void Snapshotter::handleMsg(std::string msg)
     {
         int uid = Utils::strToInt(splits[0]);
         handleAppMsg(uid);
-        mMap(msg);
+        mMap.handleMsg(msg);
     }
 }
 
