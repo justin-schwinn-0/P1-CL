@@ -90,7 +90,7 @@ void Snapshotter::handleParent(int uid)
     else
     {
         // send ref
-        Utils::log("refing", uid)
+        Utils::log("refing", uid);
         rNode.sendTo(uid,getCtrlStr(REF));
     }
 }
@@ -104,7 +104,7 @@ void Snapshotter::handleChild(int uid)
 void Snapshotter::handleRef(int uid)
 {
     convergeForChild();
-    Utils::log("ref is", uid)
+    Utils::log("ref is", uid);
 }
 
 void Snapshotter::handleMarker(int uid)
