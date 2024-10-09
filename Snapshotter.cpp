@@ -8,7 +8,8 @@ Snapshotter::Snapshotter(NodeInfo& ni):
             ni.maxNumber),
     rNode(ni.n),
     mParent(-1),
-    mSnapshotDelay(ni.snapshotDelay)
+    mSnapshotDelay(ni.snapshotDelay),
+    mChildren(0)
 {
 
 }
