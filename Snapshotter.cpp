@@ -95,6 +95,10 @@ void Snapshotter::handleMarker(int uid)
     if(!anyRecording())
     {
         Utils::log("got all marks! done with snapshot!");
+        if(!mChannelEmpty || mMap.isActive())
+        {
+            Utils::log("protocol still active!");
+        }
     }
 }
 
