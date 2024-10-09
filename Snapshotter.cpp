@@ -82,7 +82,7 @@ bool Snapshotter::anyRecording()
 
     for(auto it : mRxMarkMap)
     {
-        out = it->second || out;
+        out = it.second || out;
     }
 
     return out;
