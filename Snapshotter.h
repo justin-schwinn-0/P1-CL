@@ -39,7 +39,7 @@ private:
     MAP_Alg mMap;
     Node& rNode;
 
-    std::map<int,bool> mRxMarkMap;
+    std::map<int,bool> mWaitingMap;
 
     int mParent;
 };

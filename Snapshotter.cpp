@@ -45,7 +45,7 @@ void Snapshotter::startSnapshot()
 
     for(int uid : rNode.getConnectedUids())
     {
-        mRxMarkMap[uid] = true;
+        mWaitingMap[uid] = true;
     }
     
 }
@@ -79,13 +79,21 @@ void Snapshotter::handleMarker(int uid)
     {
         Utils::log("got mark from",uid);
     }
+
+    //any mark means we have recieved a mark from that uid
+    mWaitingMap[uid] = false;
+
+    if(!anyRecording())
+    {
+        Utils::log("got all marks! done with snapshot!");
+    }
 }
 
 bool Snapshotter::anyRecording()
 {
     bool out = false;
 
-    for(auto it : mRxMarkMap)
+    for(auto it : mWaitingMap)
     {
         out = it.second || out;
     }
