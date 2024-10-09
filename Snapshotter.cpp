@@ -107,6 +107,7 @@ void Snapshotter::handleAppMsg(int uid)
     if(mRecordingMap[uid])
     {
         mChannelEmpty = false;
+        Utils::log("message in channel!");
     }
 }
 
