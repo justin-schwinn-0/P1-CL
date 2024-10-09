@@ -74,8 +74,8 @@ void Snapshotter::init()
     createTree();
     mMap.init();
     
-    std::thread timerThrd(&Snapshotter::snapshotTimer, this);
-    timerThrd.detach();
+    //std::thread timerThrd(&Snapshotter::snapshotTimer, this);
+    //timerThrd.detach();
 }
 
 void Snapshotter::handleParent(int uid)
