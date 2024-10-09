@@ -26,7 +26,7 @@ void Snapshotter::startSnapshot()
 {
 }
 
-void init()
+void Snapshotter::init()
 {
     mMap.init();
 }
