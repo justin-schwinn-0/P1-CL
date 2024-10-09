@@ -44,6 +44,7 @@ void Snapshotter::handleMsg(std::string msg)
     {
         int uid = Utils::strToInt(splits[0]);
         handleAppMsg(uid);
+        mMap(msg);
     }
 }
 
@@ -61,10 +62,10 @@ void Snapshotter::startSnapshot()
 
 void Snapshotter::init()
 {
-    //mMap.init();
 
     createTree();
     startSnapshot();
+    mMap.init();
 }
 
 void Snapshotter::handleParent(int uid)
@@ -72,7 +73,6 @@ void Snapshotter::handleParent(int uid)
     if(mParent == -1)
     {
         mParent = uid;
-        // send child ack to parent
         rNode.sendExcept(uid,getCtrlStr(PARENT));
         Utils::log("parent is",mParent);
     }
