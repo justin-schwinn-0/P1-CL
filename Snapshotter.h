@@ -21,7 +21,7 @@ public:
     void init();
 
 private:
-    MAP_Alg map;
+    MAP_Alg mMap;
     Node& rNode;
 
     bool mActive = false;
