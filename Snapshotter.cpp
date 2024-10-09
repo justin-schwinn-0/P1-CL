@@ -1,4 +1,5 @@
 #include "Snapshotter.h"
+#include <thread>
 
 Snapshotter::Snapshotter(NodeInfo& ni):
     mMap(   ni.n,
