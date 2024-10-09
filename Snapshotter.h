@@ -30,6 +30,8 @@ public:
 
     std::string getParentStr();
 
+    void createTree();
+
     void handleParent(int uid);
 
 private:
