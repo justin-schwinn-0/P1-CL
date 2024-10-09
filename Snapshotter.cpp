@@ -17,11 +17,16 @@ Snapshotter::~Snapshotter()
 
 void Snapshotter::handleMsg(std::string msg)
 {
+    Utils::log("tunnel through snapshotter");
 
+    mMap.handleMsg(msg);
 }
 
 void Snapshotter::startSnapshot()
 {
 }
 
-void init();
+void init()
+{
+    mMap.init();
+}
