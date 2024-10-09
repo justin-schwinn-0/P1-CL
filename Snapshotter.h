@@ -41,6 +41,8 @@ private:
     bool mActive = false;
 
     std::map<int,bool> mRxMarkMap;
+
+    int mParent;
 };
 
 #endif
