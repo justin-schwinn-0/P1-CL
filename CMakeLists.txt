@@ -13,6 +13,7 @@ set(Sources
     MAP_Alg.cpp
     Utils.cpp
     VectorClock.cpp
+    Snapshotter.cpp
 )
 
 set(Headers
@@ -21,6 +22,7 @@ set(Headers
     MAP_Alg.h
     Utils.h
     VectorClock.h
+    Snapshotter.h
 )
 
 find_library(SCTP_LIB libsctp.so)
