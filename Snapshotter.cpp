@@ -60,6 +60,7 @@ void Snapshotter::handleParent(int uid)
         // send ref ack to parent
 
     }
+    Utils::log("parent is",mParent);
 }
 
 void Snapshotter::createTree()
