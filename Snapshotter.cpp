@@ -74,6 +74,10 @@ void Snapshotter::handleMarker(int uid)
     {
         startSnapshot();
     }
+    else
+    {
+        Utils::log("got mark from",uid);
+    }
 }
 
 bool Snapshotter::anyRecording()
