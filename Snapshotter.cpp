@@ -78,7 +78,7 @@ void Snapshotter::handleParent(int uid)
     {
         mParent = uid;
         rNode.sendExcept(uid,getCtrlStr(PARENT));
-        mConvergesRemaining = rnode.getNeighborsSize() -1;
+        mConvergesRemaining = rNode.getNeighborsSize() -1;
         Utils::log("parent is",mParent);
     }
     else
