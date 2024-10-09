@@ -124,5 +124,5 @@ void Snapshotter::createTree()
 }
 std::string Snapshotter::getCtrlStr(int ctrlMsgId)
 {
-    return std::to_string(rNode.getUid()) + CTRL_DELIM + std::to_string(ctrlMsgId);
+    return std::to_string(rNode.getUid()) + APP_DELIM + std::to_string(ctrlMsgId);
 }
