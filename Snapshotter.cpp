@@ -130,7 +130,7 @@ void Snapshotter::handleAppMsg(int uid)
     }
 }
 
-void convergeForChild()
+void Snapshotter::convergeForChild()
 {
     if(converge())
     {

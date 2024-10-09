@@ -36,6 +36,7 @@ public:
     void handleMarker(int uid);
     void handleAppMsg(int uid);
     bool converge();
+    void convergeForChild();
     bool anyRecording();
     void snapshotTimer();
 
