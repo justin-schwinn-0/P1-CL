@@ -146,10 +146,15 @@ void Snapshotter::convergeForChild()
     {
         rNode.sendTo(mParent,getCtrlStr(CHILD));
     }
+    else
+    {
+        Utils::log("didn't converge");
+    }
 }
 
 bool Snapshotter::converge()
 {
+    Utils::log("try converge",mConvergesRemaining);
     mConvergesRemaining--;
     if(mConvergesRemaining == 0)
     {
