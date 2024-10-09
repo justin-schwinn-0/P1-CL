@@ -12,8 +12,7 @@ const std::string CTRL_DELIM = "**";
 
 const int MARKER = 1000;
 const int PARENT = 1001;
-const int CHILD = 1002;
-const int REF = 1003;
+const int REPORT = 1002;
 
 
 class Snapshotter
@@ -28,17 +27,16 @@ public:
 
     void init();
 
-    std::string getParentStr();
+    std::string getCtrlStr(int ctrlMsgId);
 
     void createTree();
 
     void handleParent(int uid);
+    void handleMarker(int uid);
 
 private:
     MAP_Alg mMap;
     Node& rNode;
-
-    bool mActive = false;
 
     std::map<int,bool> mRxMarkMap;
 

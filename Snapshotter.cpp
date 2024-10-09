@@ -30,6 +30,9 @@ void Snapshotter::handleMsg(std::string msg)
         case PARENT:
             handleParent(uid);
             break;
+        case MARKER:
+            handleMarker();
+            break;
         default:
             Utils::log("Unknown message!",msgId);
             break;
@@ -38,6 +41,12 @@ void Snapshotter::handleMsg(std::string msg)
 
 void Snapshotter::startSnapshot()
 {
+    rNode.flood(getCtrlStr(MARKER));
+
+    for(int uid : rNode.getConnectedUids())
+    {
+        mRxMarkMap[uid] = true;
+    }
     
 }
 
@@ -54,21 +63,36 @@ void Snapshotter::handleParent(int uid)
     {
         mParent = uid;
         // send child ack to parent
-        rNode.sendExcept(uid,getParentStr());
+        rNode.sendExcept(uid,getCtrlStr(PARENT));
+        Utils::log("parent is",mParent);
     }
-    else
-    {
-        // send ref ack to parent
+}
 
+void Snapshotter::handleMarker(int uid)
+{
+    if(!anyRecording())
+    {
+        startSnapshot()
     }
-    Utils::log("parent is",mParent);
+}
+
+bool Snapshotter::anyRecording()
+{
+    bool out = false;
+
+    for(bool val : mRxMarkMap)
+    {
+        out = val || out;
+    }
+
+    return out;
 }
 
 void Snapshotter::createTree()
 {
     rNode.flood(getParentStr());
 }
-std::string Snapshotter::getParentStr()
+std::string Snapshotter::getCtrlStr(int ctrlMsgId)
 {
-    return std::to_string(rNode.getUid()) + CTRL_DELIM + std::to_string(PARENT);
+    return std::to_string(rNode.getUid()) + CTRL_DELIM + std::to_string(ctrlMsgId);
 }
