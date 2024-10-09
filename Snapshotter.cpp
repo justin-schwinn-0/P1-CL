@@ -55,6 +55,7 @@ void Snapshotter::init()
     //mMap.init();
 
     createTree();
+    startSnapshot();
 }
 
 void Snapshotter::handleParent(int uid)
