@@ -91,7 +91,6 @@ void Snapshotter::handleParent(int uid)
     else
     {
         // send ref
-        Utils::log("refing", uid);
         rNode.sendTo(uid,getCtrlStr(REF));
     }
 }
@@ -149,7 +148,7 @@ void Snapshotter::convergeForChild()
     if(converge())
     {
         rNode.sendTo(mParent,getCtrlStr(CHILD));
-        Utils::log("converged");
+        Utils::log("converged",mChildren);
     }
 }
 
