@@ -4,8 +4,8 @@
 2 dc24.utdallas.edu 4293
 #3 dc25.utdallas.edu 3262
 #4 dc26.utdallas.edu 6213
-1 #2 4 
+1 2 #2 4 
 0 2 #2 3 
-1 # 3 
+0 1 # 3 
 #1 2 4 
 #0 3
