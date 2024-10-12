@@ -125,6 +125,12 @@ void Snapshotter::handleMarker(int uid)
         if(!mChannelEmpty || mMap.isActive())
         {
             Utils::log("protocol still active!");
+            rNode.sendTo(mParent,getCtrlStr(REPORT_ACT));
+        }
+        else
+        {
+            Utils::log("Protocol is passive");
+            rNode.sendTo(mParent,getCtrlStr(REPORT_PASS));
         }
 
         Utils::log(mMap.getVectorClock());
@@ -200,7 +206,7 @@ std::string Snapshotter::getCtrlStr(int ctrlMsgId)
 
 void Snapshotter::snapshotTimer()
 {
-    while(mIncomplete)
+    if(mIncomplete)
     {
         std::this_thread::sleep_for(std::chrono::milliseconds(mSnapshotDelay));
         startSnapshot();
