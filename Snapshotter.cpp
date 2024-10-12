@@ -175,7 +175,7 @@ void Snapshotter::convergeForReport()
     {
         if(rNode.getUid() == 0 )
         {
-            if(conSnapshots)
+            if(contSnapshots)
             {
                 initSnapshotProtocol();
             }
