@@ -139,11 +139,12 @@ void Node::recvMsg(int fd)
 
     struct sctp_sndrcvinfo sndrcvinfo;
     int flags=0;
-    
+   
+    int in;
 
     do
     {
-        int in = sctp_recvmsg(fd,buf,bufSize,NULL,0,&sndrcvinfo,&flags);
+        in = sctp_recvmsg(fd,buf,bufSize,NULL,0,&sndrcvinfo,&flags);
         std::string strMsg(buf);
         //Utils::log("got ", strMsg);
         //std::cout << "Stream ID: " << sndrcvinfo.sinfo_stream << std::endl;
