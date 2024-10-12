@@ -171,7 +171,7 @@ void Snapshotter::convergeForReport()
     Utils::log("try converge for report");
     if(converge())
     {
-        if(mReportActive || !mChannelEmpty || mMap.isActive())
+        if(mReportActive || mMap.isActive())
         {
             Utils::log("protocol still active!");
             rNode.sendTo(mParent,getCtrlStr(REPORT_ACT));
