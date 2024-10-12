@@ -112,13 +112,10 @@ void Snapshotter::handleRef(int uid)
 
 void Snapshotter::handleMarker(int uid)
 {
+    Utils::log("got mark from",uid);
     if(!anyRecording())
     {
         startSnapshot();
-    }
-    else
-    {
-        Utils::log("got mark from",uid);
     }
 
     mRecordingMap[uid] = false;
