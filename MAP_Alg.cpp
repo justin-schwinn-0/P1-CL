@@ -74,7 +74,7 @@ void MAP_Alg::active()
         mVc.increment();
     }
     //Utils::log("Passive! sent:",mMsgsSent, "Max:",mMaxNum);
-    Utils::log("Passive! VC:",mVc.to_string());
+    //Utils::log("Passive! VC:",mVc.to_string());
     mActive = false;
 }
 

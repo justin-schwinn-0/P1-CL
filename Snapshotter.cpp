@@ -72,7 +72,6 @@ void Snapshotter::init()
 {
 
     createTree();
-    mMap.init();
     
     //std::thread timerThrd(&Snapshotter::snapshotTimer, this);
     //timerThrd.detach();
@@ -148,6 +147,11 @@ void Snapshotter::convergeForChild()
     {
         rNode.sendTo(mParent,getCtrlStr(CHILD));
         Utils::log("converged",mChildren);
+
+        if(rNode.getUid() == 0)
+        {
+            mMap.init();
+        }
     }
 }
 
