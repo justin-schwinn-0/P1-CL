@@ -37,6 +37,7 @@ public:
     void handleChild(int uid);
     void handleRef(int uid);
     void handleMarker(int uid);
+    void handleReport(int uid,bool isActive);
     void handleAppMsg(int uid);
     bool converge();
     void convergeForChild();
@@ -56,6 +57,9 @@ private:
 
     int mParent;
     int mSnapshotDelay = 10000;
+
+    bool mReportActive = false; // false is passive
+
     bool mIncomplete = true;
 
     int mChildren;

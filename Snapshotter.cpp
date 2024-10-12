@@ -42,6 +42,12 @@ void Snapshotter::handleMsg(std::string msg)
             case MARKER:
                 handleMarker(uid);
                 break;
+            case REPORT_ACT:
+                handleReport(uid,true);
+                break;
+            case REPORT_PASS:
+                handleReport(uid,false);
+                break;
             default:
                 Utils::log("Unknown message!",msgId);
                 break;
@@ -60,7 +66,8 @@ void Snapshotter::startSnapshot()
     Utils::log("sending marks");
     rNode.flood(getCtrlStr(MARKER));
     mChannelEmpty = true;
-    mConvergesRemaining = mChildren;
+    mConvergesRemaining = mChildren + 1;
+    mReportActive = false;
 
     for(int uid : rNode.getConnectedUids())
     {
@@ -71,9 +78,7 @@ void Snapshotter::startSnapshot()
 
 void Snapshotter::init()
 {
-
     createTree();
-    
 }
 
 void Snapshotter::handleParent(int uid)
@@ -116,24 +121,20 @@ void Snapshotter::handleMarker(int uid)
         Utils::log("got mark from",uid);
     }
 
-    //any mark means we have recieved a mark from that uid
     mRecordingMap[uid] = false;
 
     if(!anyRecording())
     {
-        //Utils::log("got all marks! done with snapshot!");
-        if(!mChannelEmpty || mMap.isActive())
-        {
-            Utils::log("protocol still active!");
-            rNode.sendTo(mParent,getCtrlStr(REPORT_ACT));
-        }
-        else
-        {
-            Utils::log("Protocol is passive");
-            rNode.sendTo(mParent,getCtrlStr(REPORT_PASS));
-        }
+        convergeForReport();
+    }
+}
 
-        Utils::log(mMap.getVectorClock());
+void Snapshotter::handleReport(int uid,bool isActive)
+{
+    Utils::log("child",uid,"reports active:",isActive);
+    if(isActive)
+    {
+        mReportActive = true;
     }
 }
 
@@ -167,7 +168,18 @@ void Snapshotter::convergeForReport()
 {
     if(converge())
     {
+        if(mReportActive || !mChannelEmpty || mMap.isActive())
+        {
+            Utils::log("protocol still active!");
+            rNode.sendTo(mParent,getCtrlStr(REPORT_ACT));
+        }
+        else
+        {
+            Utils::log("Protocol is passive");
+            rNode.sendTo(mParent,getCtrlStr(REPORT_PASS));
+        }
 
+        Utils::log(mMap.getVectorClock());
     }
 }
 
