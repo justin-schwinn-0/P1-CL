@@ -37,6 +37,7 @@ public:
     void handleAppMsg(int uid);
     bool converge();
     void convergeForChild();
+    void convergeForReport();
     bool anyRecording();
     void snapshotTimer();
 
