@@ -73,8 +73,6 @@ void Snapshotter::init()
 
     createTree();
     
-    //std::thread timerThrd(&Snapshotter::snapshotTimer, this);
-    //timerThrd.detach();
 }
 
 void Snapshotter::handleParent(int uid)
@@ -151,7 +149,18 @@ void Snapshotter::convergeForChild()
         if(rNode.getUid() == 0)
         {
             mMap.init();
+            
+            std::thread timerThrd(&Snapshotter::snapshotTimer, this);
+            timerThrd.detach();
         }
+    }
+}
+
+void Snapshotter::convergeForReport()
+{
+    if(converge())
+    {
+
     }
 }
 
@@ -182,6 +191,7 @@ void Snapshotter::createTree()
     rNode.flood(getCtrlStr(PARENT));
     mConvergesRemaining = rNode.getNeighborsSize();
 }
+
 std::string Snapshotter::getCtrlStr(int ctrlMsgId)
 {
     return std::to_string(rNode.getUid()) + APP_DELIM + std::to_string(ctrlMsgId);
