@@ -125,6 +125,7 @@ void Snapshotter::handleMarker(int uid)
 
     if(!anyRecording())
     {
+        Utils::log("own converge");
         convergeForReport();
     }
 }
