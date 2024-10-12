@@ -49,7 +49,7 @@ void Connection::sendMsg(std::string msg)
         else
         {
             sent = true;
-            Utils::log("                         sent:" ,msg, "to " mUid);
+            Utils::log("                         sent:" ,msg, "to ", mUid);
         }
     }
     while(!sent);
