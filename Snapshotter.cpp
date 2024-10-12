@@ -25,7 +25,7 @@ void Snapshotter::handleMsg(std::string msg)
 
     if(splits.size() == 2)
     {
-        //Utils::log("                         ",msg);
+        Utils::log("                         ",msg);
         int uid = Utils::strToInt(splits[0]);
         int msgId = Utils::strToInt(splits[1]); 
 
@@ -50,7 +50,7 @@ void Snapshotter::handleMsg(std::string msg)
                 handleReport(uid,false);
                 break;
             default:
-                //Utils::log("Unknown message!",msgId);
+                Utils::log("Unknown message!",msgId);
                 break;
         }
     }
@@ -64,7 +64,7 @@ void Snapshotter::handleMsg(std::string msg)
 
 void Snapshotter::startSnapshot()
 {
-    //Utils::log("sending marks");
+    Utils::log("sending marks");
     rNode.flood(getCtrlStr(MARKER));
     mConvergesRemaining = mChildren + 1;
     mReportActive = false;
@@ -89,7 +89,7 @@ void Snapshotter::handleParent(int uid)
         mParent = uid;
         rNode.sendExcept(uid,getCtrlStr(PARENT));
         mConvergesRemaining = rNode.getNeighborsSize() -1;
-        //Utils::log("parent is",mParent);
+        Utils::log("parent is",mParent);
     }
     else
     {
@@ -100,20 +100,20 @@ void Snapshotter::handleParent(int uid)
 
 void Snapshotter::handleChild(int uid)
 {
-    //Utils::log("child is",uid);
+    Utils::log("child is",uid);
     mChildren++;
     convergeForChild();
 }
 
 void Snapshotter::handleRef(int uid)
 {
-    //Utils::log("ref is", uid);
+    Utils::log("ref is", uid);
     convergeForChild();
 }
 
 void Snapshotter::handleMarker(int uid)
 {
-    //Utils::log("got mark from",uid);
+    Utils::log("got mark from",uid);
     if(!anyRecording())
     {
         startSnapshot();
@@ -123,14 +123,14 @@ void Snapshotter::handleMarker(int uid)
 
     if(!anyRecording())
     {
-        //Utils::log("own converge");
+        Utils::log("own converge");
         convergeForReport();
     }
 }
 
 void Snapshotter::handleReport(int uid,bool isActive)
 {
-    //Utils::log("child",uid,"reports active:",isActive);
+    Utils::log("child",uid,"reports active:",isActive);
     if(isActive)
     {
         mReportActive = true;
@@ -144,7 +144,7 @@ void Snapshotter::handleAppMsg(int uid)
     if(mRecordingMap[uid])
     {
         mReportActive = true;
-        //Utils::log("message in channel",uid,"!");
+        Utils::log("message in channel",uid,"!");
     }
 }
 
@@ -153,7 +153,7 @@ void Snapshotter::convergeForChild()
     if(converge())
     {
         rNode.sendTo(mParent,getCtrlStr(CHILD));
-        //Utils::log("converged",mChildren);
+        Utils::log("converged",mChildren);
 
         if(rNode.getUid() == 0)
         {
@@ -166,7 +166,7 @@ void Snapshotter::convergeForChild()
 
 void Snapshotter::convergeForReport()
 {
-    //Utils::log("try converge for report");
+    Utils::log("try converge for report");
 
     bool contSnapshots = mReportActive || mMap.isActive();
     if(converge())
@@ -179,25 +179,25 @@ void Snapshotter::convergeForReport()
             }
             else
             {
-                //Utils::log("Protocol is done!");
+                Utils::log("Protocol is done!");
             }
         }
         else
         {
             if(contSnapshots)
             {
-                //Utils::log("protocol still active!");
+                Utils::log("protocol still active!");
                 rNode.sendTo(mParent,getCtrlStr(REPORT_ACT));
 
             }
             else
             {
-                //Utils::log("Protocol is passive");
+                Utils::log("Protocol is passive");
                 rNode.sendTo(mParent,getCtrlStr(REPORT_PASS));
             }
         }
 
-        //Utils::log(mMap.getVectorClock());
+        Utils::log(mMap.getVectorClock());
     }
 }
 

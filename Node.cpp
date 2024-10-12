@@ -145,11 +145,15 @@ void Node::recvMsg(int fd)
     if(in > 0)
     {
         std::string strMsg(buf);
-        Utils::log("                    got ", strMsg);
+        //Utils::log("                    got ", strMsg);
         //std::cout << "Stream ID: " << sndrcvinfo.sinfo_stream << std::endl;
         //std::cout << "PPID: " << sndrcvinfo.sinfo_ppid << std::endl;
-        std::cout << "Flags: " << flags << std::endl;
+        //std::cout << "Flags: " << flags << std::endl;
         msgHandler(strMsg);
+    }
+    else
+    {
+        Utils::log("something happened!",in,flags);
     }
 }
 
