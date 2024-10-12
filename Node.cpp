@@ -145,6 +145,7 @@ void Node::recvMsg(int fd)
     do
     {
         in = sctp_recvmsg(fd,buf,bufSize,NULL,0,&sndrcvinfo,&flags);
+        Utils::log("msg is size",in);
         std::string strMsg(buf);
         //Utils::log("got ", strMsg);
         //std::cout << "Stream ID: " << sndrcvinfo.sinfo_stream << std::endl;
