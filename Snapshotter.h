@@ -52,8 +52,6 @@ private:
 
     int mConvergesRemaining = -1;
 
-    bool mChannelEmpty;
-
     std::map<int,bool> mRecordingMap;
 
     int mParent;

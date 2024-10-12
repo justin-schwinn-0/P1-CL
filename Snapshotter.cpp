@@ -66,7 +66,6 @@ void Snapshotter::startSnapshot()
 {
     Utils::log("sending marks");
     rNode.flood(getCtrlStr(MARKER));
-    mChannelEmpty = true;
     mConvergesRemaining = mChildren + 1;
     mReportActive = false;
 
@@ -146,7 +145,7 @@ void Snapshotter::handleAppMsg(int uid)
 {
     if(mRecordingMap[uid])
     {
-        mChannelEmpty = false;
+        mReportActive = true;
         Utils::log("message in channel!");
     }
 }
