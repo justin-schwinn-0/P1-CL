@@ -151,7 +151,7 @@ void Node::recvMsg(int fd)
         //std::cout << "PPID: " << sndrcvinfo.sinfo_ppid << std::endl;
         //std::cout << "Flags: " << flags << std::endl;
         msgHandler(strMsg);
-    }while(in > 0)
+    }while(in > 0);
 }
 
 Connection Node::getOwnConnection()
