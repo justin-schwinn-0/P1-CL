@@ -1,11 +1,11 @@
-2 2 5 100 2000 25
+3 2 5 100 2000 25
 0 dc22.utdallas.edu 5234
 1 dc23.utdallas.edu 4223
-#2 dc24.utdallas.edu 4293
+2 dc24.utdallas.edu 4293
 #3 dc25.utdallas.edu 3262
 #4 dc26.utdallas.edu 6213
 1 #2 4 
-0 #2 3 
-# 1 0 3 
+2 #2 3 
+1 0# 3 
 #1 2 4 
 #0 3
