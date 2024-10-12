@@ -166,6 +166,7 @@ void Snapshotter::convergeForChild()
 
 void Snapshotter::convergeForReport()
 {
+    Utils::log("try converge for report");
     if(converge())
     {
         if(mReportActive || !mChannelEmpty || mMap.isActive())
