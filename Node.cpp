@@ -139,20 +139,18 @@ void Node::recvMsg(int fd)
 
     struct sctp_sndrcvinfo sndrcvinfo;
     int flags=0;
-   
-    int in = 0;
+    
+    int in = sctp_recvmsg(fd,buf,bufSize,NULL,0,&sndrcvinfo,&flags);
 
-    do
+    if(in > 0)
     {
-        in = sctp_recvmsg(fd,buf,bufSize,NULL,0,&sndrcvinfo,&flags);
-        Utils::log("msg is size",in);
         std::string strMsg(buf);
-        //Utils::log("got ", strMsg);
-        //std::cout << "Stream ID: " << sndrcvinfo.sinfo_stream << std::endl;
-        //std::cout << "PPID: " << sndrcvinfo.sinfo_ppid << std::endl;
-        //std::cout << "Flags: " << flags << std::endl;
+        Utils::log("got ", strMsg);
+        std::cout << "Stream ID: " << sndrcvinfo.sinfo_stream << std::endl;
+        std::cout << "PPID: " << sndrcvinfo.sinfo_ppid << std::endl;
+        std::cout << "Flags: " << flags << std::endl;
         msgHandler(strMsg);
-    }while(in > 0);
+    }
 }
 
 Connection Node::getOwnConnection()
