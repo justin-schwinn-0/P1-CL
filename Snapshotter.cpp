@@ -161,9 +161,8 @@ void Snapshotter::convergeForChild()
         if(rNode.getUid() == 0)
         {
             mMap.init();
-            
-            std::thread timerThrd(&Snapshotter::snapshotTimer, this);
-            timerThrd.detach();
+
+            initSnapshotProtocol();
         }
     }
 }
@@ -177,6 +176,11 @@ void Snapshotter::convergeForReport()
         {
             Utils::log("protocol still active!");
             rNode.sendTo(mParent,getCtrlStr(REPORT_ACT));
+
+            if(rNode.getUid()==0)
+            {
+                initSnapshotProtocol();
+            }
         }
         else
         {
@@ -228,4 +232,10 @@ void Snapshotter::snapshotTimer()
         std::this_thread::sleep_for(std::chrono::milliseconds(mSnapshotDelay));
         startSnapshot();
     }
+}
+
+void Snapshotter::initSnapshotProtocol()
+{
+    std::thread timerThrd(&Snapshotter::snapshotTimer, this);
+    timerThrd.detach();
 }

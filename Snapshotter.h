@@ -44,6 +44,7 @@ public:
     void convergeForReport();
     bool anyRecording();
     void snapshotTimer();
+    void initSnapshotProtocol();
 
 private:
     MAP_Alg mMap;
