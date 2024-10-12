@@ -22,7 +22,7 @@ Snapshotter::~Snapshotter()
 void Snapshotter::handleMsg(std::string msg)
 {
 
-    //mMap.handleMsg(msg);
+    Utils::log(msg);
     auto splits = Utils::split(msg, APP_DELIM);
 
     if(splits.size() == 2)
