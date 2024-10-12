@@ -136,6 +136,8 @@ void Snapshotter::handleReport(int uid,bool isActive)
     {
         mReportActive = true;
     }
+
+    convergeForReport();
 }
 
 void Snapshotter::handleAppMsg(int uid)
