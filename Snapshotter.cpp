@@ -169,22 +169,34 @@ void Snapshotter::convergeForChild()
 void Snapshotter::convergeForReport()
 {
     Utils::log("try converge for report");
+
+    bool contSnapshots = mReportActive || mMap.isActive();
     if(converge())
     {
-        if(mReportActive || mMap.isActive())
+        if(rNode.getUid() == 0 )
         {
-            Utils::log("protocol still active!");
-            rNode.sendTo(mParent,getCtrlStr(REPORT_ACT));
-
-            if(rNode.getUid()==0)
+            if(conSnapshots)
             {
                 initSnapshotProtocol();
+            }
+            else
+            {
+                Utils::log("Protocol is done!");
             }
         }
         else
         {
-            Utils::log("Protocol is passive");
-            rNode.sendTo(mParent,getCtrlStr(REPORT_PASS));
+            if(contSnapshots)
+            {
+                Utils::log("protocol still active!");
+                rNode.sendTo(mParent,getCtrlStr(REPORT_ACT));
+
+            }
+            else
+            {
+                Utils::log("Protocol is passive");
+                rNode.sendTo(mParent,getCtrlStr(REPORT_PASS));
+            }
         }
 
         Utils::log(mMap.getVectorClock());
