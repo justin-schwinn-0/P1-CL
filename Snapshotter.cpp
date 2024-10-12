@@ -143,7 +143,7 @@ void Snapshotter::handleAppMsg(int uid)
     if(mRecordingMap[uid])
     {
         mReportActive = true;
-        Utils::log("message in channel!");
+        Utils::log("message in channel",uid,"!");
     }
 }
 
