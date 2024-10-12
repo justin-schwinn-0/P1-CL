@@ -140,7 +140,7 @@ void Node::recvMsg(int fd)
     struct sctp_sndrcvinfo sndrcvinfo;
     int flags=0;
    
-    int in;
+    int in = 0;
 
     do
     {
