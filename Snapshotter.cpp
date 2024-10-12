@@ -57,6 +57,7 @@ void Snapshotter::handleMsg(std::string msg)
 
 void Snapshotter::startSnapshot()
 {
+    Utils::log("sending marks");
     rNode.flood(getCtrlStr(MARKER));
     mChannelEmpty = true;
     mConvergesRemaining = mChildren;
