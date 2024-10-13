@@ -69,7 +69,7 @@ void Node::openSocket()
     struct sctp_assoc_value av;
     av.assoc_id = SCTP_FUTURE_ASSOC;
     av.assoc_value = 10;  
-    ret = setsockopt(mListenFd, IPPROTO, SCTP_MAX_BURST, &av,sizeof(av));
+    ret = setsockopt(mListenFd, IPPROTO_SCTP, SCTP_MAX_BURST, &av,sizeof(av));
     if(ret < 0)
     {
         Utils::log( "coudn't set socket option NODELAY: " , strerror(errno) );
