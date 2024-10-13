@@ -61,6 +61,7 @@ void Snapshotter::handleMsg(std::string msg)
         mMap.handleMsg(msg);
     }
 
+    Utils::log("===================================");
     rNode.releaseMessages();
 }
 
@@ -191,7 +192,7 @@ void Snapshotter::convergeForReport()
             {
                 Utils::log("protocol still active!");
                 rNode.sendTo(mParent,getCtrlStr(REPORT_ACT));
-                Utils::log("sent msg");
+                Utils::log("sent msg  ");
             }
             else
             {
