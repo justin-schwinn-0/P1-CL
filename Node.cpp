@@ -142,6 +142,7 @@ void Node::sendExcept(int uid, std::string msg)
 
 void Node::releaseMessages()
 {
+    Utils::log("releasing messages");
     for(auto& c : mNeighbors)
     {
         c.releaseMessages();

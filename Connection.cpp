@@ -102,6 +102,7 @@ void Connection::queueMessage(std::string msg)
 
 void Connection::releaseMessages()
 {
+    Utils::printVector("Messages to send",mQueuedMessages);
     std::string msg;
     if(mQueuedMessages.size() > 1)
     {
