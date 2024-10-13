@@ -170,7 +170,6 @@ void Snapshotter::convergeForReport()
     bool contSnapshots = mReportActive || mMap.isActive();
     if(converge())
     {
-        std::this_thread::sleep_for(std::chrono::milliseconds(1000));
         if(rNode.getUid() == 0 )
         {
             if(contSnapshots)
