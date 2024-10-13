@@ -184,7 +184,7 @@ void runAlg(NodeInfo& ni)
     }
 
     std::thread releaseThrd(&Node::releaseMessagesThread, ni.n);
-    releaseThread.detach();
+    releaseThrd.detach();
 
     ni.n.listenToNeighbors();
 }
