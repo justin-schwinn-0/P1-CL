@@ -82,6 +82,7 @@ void Snapshotter::startSnapshot()
 void Snapshotter::init()
 {
     createTree();
+    Utils::log("create tree");
 }
 
 void Snapshotter::handleParent(int uid)
