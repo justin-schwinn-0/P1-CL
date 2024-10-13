@@ -1,6 +1,7 @@
 #ifndef CONNECTION_H
 #define CONNECTION_H
 
+#include <vector>
 #include <string>
 #include <mutex>
 
@@ -14,21 +15,15 @@ public:
 
     Connection(); 
     ~Connection();
-/*
 
-    void sendMsg(std::string msg);
-
-
-    void acceptCon();
-
-
-    void resetRemoteConnection();
-
-*/
     int getUid()
     { return mUid; }
 
     void sendMsg(std::string msg);
+
+    void queueMessage(std::string msg);
+
+    void releaseMessages();
 
     void makeConnection();
 
@@ -47,6 +42,8 @@ private:
     int mCon;
 
     int mUid;
+
+    std::vector<std::string> mQueuedMessages;
 };
 
 #endif

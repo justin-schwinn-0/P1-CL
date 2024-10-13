@@ -95,6 +95,11 @@ void Connection::makeConnection()
     }
 }
 
+void Connection::queueMessage(std::string msg)
+{
+    mQueuedMessages.push_back(msg);
+}
+
 void Connection::print()
 {
     std::cout << "{ " << hostname << " "<< mUid <<" " << port << " }";

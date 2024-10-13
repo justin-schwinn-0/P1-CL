@@ -60,6 +60,8 @@ void Snapshotter::handleMsg(std::string msg)
         handleAppMsg(uid);
         mMap.handleMsg(msg);
     }
+
+    rNode.releaseMessages();
 }
 
 void Snapshotter::startSnapshot()

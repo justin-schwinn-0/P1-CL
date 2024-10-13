@@ -132,6 +132,14 @@ void Node::sendExcept(int uid, std::string msg)
     }
 }
 
+void Node::releaseMessages()
+{
+    for(auto& c : mNeighbors)
+    {
+        c.releaseMessages();
+    }
+}
+
 void Node::listenToNeighbors()
 {
     while(!finishedAlg )
