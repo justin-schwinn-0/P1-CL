@@ -164,7 +164,7 @@ void Node::sendExcept(int uid, std::string msg)
     }
 }
 
-void Node::relaseMessagesThread()
+void Node::releaseMessagesThread()
 {
     while(!finishedAlg )
     {
