@@ -21,11 +21,11 @@ Snapshotter::~Snapshotter()
 
 void Snapshotter::handleMsg(std::string msg)
 {
+    Utils::log("                         ",msg);
     auto splits = Utils::split(msg, APP_DELIM);
 
     if(splits.size() == 2)
     {
-        Utils::log("                         ",msg);
         int uid = Utils::strToInt(splits[0]);
         int msgId = Utils::strToInt(splits[1]); 
 
