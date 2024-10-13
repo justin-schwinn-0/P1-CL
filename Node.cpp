@@ -89,6 +89,7 @@ void Node::openSocket()
     struct sctp_paddrparams paddrparams;
     memset(&paddrparams, 0, sizeof(paddrparams));
     paddrparams.spp_pathmaxrxt = 5;
+    paddrparams.spp_hbinterval = 3000; 
 
     ret = setsockopt(mListenFd, IPPROTO_SCTP, SCTP_PEER_ADDR_PARAMS, &paddrparams, sizeof(paddrparams));
     if(ret < 0)
