@@ -66,6 +66,13 @@ void Node::openSocket()
         return;
     }
 
+    int rBuf = 65536;
+    ret = setsockopt(mListenFd, SOL_SOCKET, SO_RCVBUF, &rBuf,sizeof(rBuf));
+    if(ret < 0)
+    {
+        Utils::log( "coudn't set socket option NODELAY: " , strerror(errno) );
+        return;
+    }
 
     ret = listen(mListenFd, init.sinit_max_instreams);
     if(ret < 0)
