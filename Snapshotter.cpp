@@ -245,6 +245,7 @@ void Snapshotter::snapshotTimer()
     {
         std::this_thread::sleep_for(std::chrono::milliseconds(mSnapshotDelay));
         startSnapshot();
+        rNode.releaseMessages();
     }
 }
 
