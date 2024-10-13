@@ -53,7 +53,7 @@ void VectorClock::update(int sender, std::string str)
     {
         int val = Utils::strToInt(splits[i]) + (i == sender);
 
-        mClockMap[uid] = std::max(val, mClockMap[uid]);
+        mClockMap[i] = std::max(val, mClockMap[i]);
     }
     //Utils::log("o",str);
 }
