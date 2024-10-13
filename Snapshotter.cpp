@@ -198,6 +198,7 @@ void Snapshotter::convergeForReport()
 
         Utils::log(mMap.getVectorClock());
     }
+    Utils::log("exit converge for report");
 }
 
 bool Snapshotter::converge()
