@@ -84,7 +84,7 @@ void Snapshotter::init()
 
 void Snapshotter::handleParent(int uid)
 {
-    if(mParent == -1)
+    if(mParent == -1 && rNode.getUid() != 0)
     {
         mParent = uid;
         rNode.sendExcept(uid,getCtrlStr(PARENT));
