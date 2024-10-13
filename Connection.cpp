@@ -27,7 +27,7 @@ Connection::~Connection()
     close(mCon);
 }
 
-void Connection::sendMsg(std::string msg)
+void Connection::sendMsgNow(std::string msg)
 {
     if(mCon < 0)
     {
@@ -103,7 +103,7 @@ void Connection::queueMessage(std::string msg)
 void Connection::releaseMessages()
 {
     std::string msg;
-    if(mQueuedMessages.size > 1)
+    if(mQueuedMessages.size() > 1)
     {
         for(int i = 0; i < mQueuedMessages.size(); i++)
         {
@@ -111,7 +111,7 @@ void Connection::releaseMessages()
         }
     }
 
-    sendMsg(msg);
+    sendMsgNow(msg);
 }
 
 void Connection::print()
