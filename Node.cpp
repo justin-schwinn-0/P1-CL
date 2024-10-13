@@ -54,7 +54,15 @@ void Node::openSocket()
     ret = setsockopt(mListenFd, IPPROTO_SCTP, SCTP_INITMSG, &init,sizeof(init));
     if(ret < 0)
     {
-        Utils::log( "coudn't set socket: " , strerror(errno) );
+        Utils::log( "coudn't set socket option INITMSG: " , strerror(errno) );
+        return;
+    }
+
+    int flag = 1;
+    ret = setsockopt(mListenFd, IPPROTO_SCTP, SCTP_NODELAY, &flag,sizeof(flag));
+    if(ret < 0)
+    {
+        Utils::log( "coudn't set socket option NODELAY: " , strerror(errno) );
         return;
     }
 
