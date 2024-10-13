@@ -51,7 +51,7 @@ void VectorClock::update(int sender, std::string str)
     //Utils::log("m",to_string());
     for(int i = 0; i < splits.size() ; i++)
     {
-        mClockMap[i] = Utils::strToint(splits[i]);
+        mClockMap[i] = Utils::strToInt(splits[i]);
     }
     //Utils::log("o",str);
 }
