@@ -67,7 +67,7 @@ void MAP_Alg::active()
     {
         int uidIndex = picker(rng);
         int uid = connections[uidIndex];
-        std::this_thread::sleep_for(std::chrono::milliseconds(250));
+        //std::this_thread::sleep_for(std::chrono::milliseconds(250));
         sendProtocolMessage(uid,std::to_string(ACTIVE));
         numMsgs--;
         mMsgsSent++;
