@@ -81,8 +81,8 @@ void Node::openSocket()
     ret = setsockopt(mListenFd, IPPROTO_SCTP, SCTP_RTOINFO, &rtoinfo, sizeof(rtoinfo));
     if(ret < 0)
     {
-        Utils::log( "coudn't set socket option RTOINFO: " , strerror(errno) );
-        return
+        Utils::log("coudn't set socket option RTOINFO: " , strerror(errno));
+        return;
     }
 
     ret = listen(mListenFd, init.sinit_max_instreams);
