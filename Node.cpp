@@ -78,9 +78,11 @@ void Node::openSocket()
     rtoinfo.srto_min = 500;  // Set minimum RTO to 500 ms (adjust as needed)
     rtoinfo.srto_max = 3000; // Set maximum RTO to 3000 ms
     rtoinfo.srto_initial = 2000;  // Set initial RTO to 2000 ms
-
-    if (setsockopt(sockfd, IPPROTO_SCTP, SCTP_RTOINFO, &rtoinfo, sizeof(rtoinfo)) < 0) {
-        perror("setsockopt: SCTP_RTOINFO");
+    ret = setsockopt(sockfd, IPPROTO_SCTP, SCTP_RTOINFO, &rtoinfo, sizeof(rtoinfo));
+    if(ret < 0)
+    {
+        Utils::log( "coudn't set socket option RTOINFO: " , strerror(errno) );
+        return
     }
 
     ret = listen(mListenFd, init.sinit_max_instreams);
