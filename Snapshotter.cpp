@@ -187,12 +187,13 @@ void Snapshotter::convergeForReport()
             {
                 Utils::log("protocol still active!");
                 rNode.sendTo(mParent,getCtrlStr(REPORT_ACT));
-
+                Utils::log("sent msg");
             }
             else
             {
                 Utils::log("Protocol is passive");
                 rNode.sendTo(mParent,getCtrlStr(REPORT_PASS));
+                Utils::log("sent msg");
             }
         }
 
