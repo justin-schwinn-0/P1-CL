@@ -8,7 +8,7 @@
 #include <mutex>
 #include <map>
 
-const std::string APP_DELIM = "&&";
+const std::string APP_DELIM = "__";
 
 class Utils
 {
