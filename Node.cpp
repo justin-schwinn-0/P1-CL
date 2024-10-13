@@ -218,7 +218,7 @@ void Node::recvMsg(int fd)
         Utils::printVector(splits);
         for(std::string str : splits)
         {
-            msgHandler(strMsg);
+            msgHandler(str);
         }
     }
     else
