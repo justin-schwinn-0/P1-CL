@@ -138,6 +138,7 @@ void Node::recvMsg(int fd)
     char buf[bufSize];
 
     struct sctp_sndrcvinfo sndrcvinfo;
+    sndrdvinfo.sinfo_stream = 1;
     int flags=0;
     
     int in = sctp_recvmsg(fd,buf,bufSize,NULL,0,&sndrcvinfo,&flags);
