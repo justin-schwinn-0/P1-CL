@@ -31,7 +31,7 @@ public:
     void sendTo(int uid, std::string msg);
     void sendExcept(int uid, std::string msg);
 
-    void releaseMessagesThread();
+    void releaseMessagesThread(int delay);
     void releaseMessages();
 
     void print();

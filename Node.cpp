@@ -164,11 +164,11 @@ void Node::sendExcept(int uid, std::string msg)
     }
 }
 
-void Node::releaseMessagesThread()
+void Node::releaseMessagesThread(int delay)
 {
     while(!finishedAlg )
     {
-        std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+        std::this_thread::sleep_for(std::chrono::milliseconds(delay));
         releaseMessages();
     }
 }
