@@ -164,6 +164,15 @@ void Node::sendExcept(int uid, std::string msg)
     }
 }
 
+void Node::relaseMessagesThread()
+{
+    while(!finishedAlg )
+    {
+        std::this_thread::sleep_for(std::chrono::milliseconds(100));
+        releaseMessages();
+    }
+}
+
 void Node::releaseMessages()
 {
     for(auto& c : mNeighbors)

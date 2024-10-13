@@ -66,7 +66,6 @@ void Snapshotter::handleMsg(std::string msg)
         Utils::log("something went wrong with the message");
     }
 
-    rNode.releaseMessages();
 }
 
 void Snapshotter::startSnapshot()
@@ -88,7 +87,6 @@ void Snapshotter::init()
 {
     createTree();
     Utils::log("create tree");
-    rNode.releaseMessages();
 }
 
 void Snapshotter::handleParent(int uid)
@@ -250,7 +248,6 @@ void Snapshotter::snapshotTimer()
     {
         std::this_thread::sleep_for(std::chrono::milliseconds(mSnapshotDelay));
         startSnapshot();
-        rNode.releaseMessages();
     }
 }
 
