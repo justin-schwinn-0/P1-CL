@@ -111,6 +111,8 @@ void Connection::releaseMessages()
         }
     }
 
+    mQueuedMessages.clear();
+
     sendMsgNow(msg);
 }
 
