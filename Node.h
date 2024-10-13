@@ -46,8 +46,6 @@ public:
 
     void listenToNeighbors();
 
-    void releaseMessages();
-
     void recvMsg(int fd);
 
     void finishAlg()
