@@ -32,8 +32,7 @@ std::string VectorClock::to_string()
     auto it = mClockMap.begin();
     do
     {
-        out += std::to_string(it->first) + "," + 
-                std::to_string(it->second);
+        out += std::to_string(it->second);
         it++;
         if(it != mClockMap.end())
         {
