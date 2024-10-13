@@ -14,7 +14,7 @@ const int CHILD = 1002;
 const int REF = 1003;
 
 const int REPORT_ACT = 1004;
-const int REPORT_PASS = 1005;
+const int REPORT_PASS = 1025;
 
 
 class Snapshotter
