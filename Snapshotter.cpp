@@ -61,6 +61,10 @@ void Snapshotter::handleMsg(std::string msg)
         handleAppMsg(uid);
         mMap.handleMsg(msg);
     }
+    else
+    {
+        Utils::log("something went wrong with the message");
+    }
 
     rNode.releaseMessages();
 }
