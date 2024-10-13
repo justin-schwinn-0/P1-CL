@@ -19,7 +19,7 @@ public:
     int getUid()
     { return mUid; }
 
-    void sendMsg(std::string msg);
+    void sendMsgNow(std::string msg);
 
     void queueMessage(std::string msg);
 
