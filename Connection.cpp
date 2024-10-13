@@ -104,11 +104,12 @@ void Connection::releaseMessages()
 {
     Utils::log("Messages to send");
     Utils::printVector(mQueuedMessages);
-    std::string msg;
+    std::string msg = "";
     if(mQueuedMessages.size() > 1)
     {
         for(int i = 0; i < mQueuedMessages.size(); i++)
         {
+            Utils::log("appending",mQueuedMessages[i]);
             msg += mQueuedMessages[i] + (i+1 < mQueuedMessages.size() ? MSG_DELIM : "");
         }
     }
