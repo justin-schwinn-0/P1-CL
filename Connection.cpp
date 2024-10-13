@@ -113,6 +113,15 @@ void Connection::releaseMessages()
             msg += mQueuedMessages[i] + (i+1 < mQueuedMessages.size() ? MSG_DELIM : "");
         }
     }
+    else if(mQueuedMessages.size() == 1)
+    {
+        msg = mQueuedMessages[0];
+    }
+    else
+    {
+        // no messages to release!
+        return;
+    }
 
     Utils::log("sending:",msg,":");   
 
