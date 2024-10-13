@@ -83,6 +83,7 @@ void Snapshotter::init()
 {
     createTree();
     Utils::log("create tree");
+    rNode.releaseMessages();
 }
 
 void Snapshotter::handleParent(int uid)
