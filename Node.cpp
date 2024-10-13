@@ -90,7 +90,7 @@ void Node::openSocket()
     memset(&paddrparams, 0, sizeof(paddrparams));
     paddrparams.spp_pathmaxrxt = 5;
 
-    ret = setsockopt(mListenFd, IPPROTO_SCTP, SCTP_PEER_ADDR_PARAMS, &paddrparans, sizeof(paddrparans));
+    ret = setsockopt(mListenFd, IPPROTO_SCTP, SCTP_PEER_ADDR_PARAMS, &paddrparams, sizeof(paddrparams));
     if(ret < 0)
     {
         Utils::log("coudn't set socket option PEER_ADDR_PARAMS: " , strerror(errno));
