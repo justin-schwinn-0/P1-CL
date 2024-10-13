@@ -100,6 +100,11 @@ void Connection::queueMessage(std::string msg)
     mQueuedMessages.push_back(msg);
 }
 
+void Connection::releaseMessages()
+{
+
+}
+
 void Connection::print()
 {
     std::cout << "{ " << hostname << " "<< mUid <<" " << port << " }";

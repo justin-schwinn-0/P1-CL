@@ -116,8 +116,16 @@ void Node::sendTo(int uid, std::string msg)
     {
         if(c.getUid() == uid)
         {
-            c.sendMsg(msg);
+            c.queueMessage(msg);
         }
+    }
+}
+
+void Node::flood(std::string str)
+{
+    for(auto& c : mNeighbors)
+    {
+        c.queueMessage(str);
     }
 }
 
@@ -127,7 +135,7 @@ void Node::sendExcept(int uid, std::string msg)
     {
         if(c.getUid() != uid)
         {
-            c.sendMsg(msg);
+            c.queueMessage(msg);
         }
     }
 }
@@ -219,14 +227,6 @@ void Node::connectAll()
 void Node::addConnection(Connection c)
 {
     mNeighbors.push_back(c);
-}
-
-void Node::flood(std::string str)
-{
-    for(auto& n : mNeighbors)
-    {
-        n.sendMsg(str);
-    }
 }
 
 bool Node::isLeader()

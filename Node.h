@@ -31,6 +31,8 @@ public:
     void sendTo(int uid, std::string msg);
     void sendExcept(int uid, std::string msg);
 
+    void releaseMessages();
+
     void print();
     void addConnection(Connection c);
 
