@@ -102,7 +102,16 @@ void Connection::queueMessage(std::string msg)
 
 void Connection::releaseMessages()
 {
+    std::string msg;
+    if(mQueuedMessages.size > 1)
+    {
+        for(int i = 0; i < mQueuedMessages.size(); i++)
+        {
+            msg += mQueuedMessages[i] + (i+1 < mQueuedMessages.size() ? MSG_DELIM : "");
+        }
+    }
 
+    sendMsg(msg);
 }
 
 void Connection::print()

@@ -9,6 +9,7 @@
 #include <map>
 
 const std::string APP_DELIM = "__";
+const std::string MSG_DELIM = ";;";
 
 class Utils
 {
