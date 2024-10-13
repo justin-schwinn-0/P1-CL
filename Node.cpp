@@ -138,7 +138,7 @@ void Node::recvMsg(int fd)
     char buf[bufSize];
 
     struct sctp_sndrcvinfo sndrcvinfo;
-    sndrcvinfo.sinfo_stream = 1;
+    //sndrcvinfo.sinfo_stream = 1;
     int flags=0;
     
     int in = sctp_recvmsg(fd,buf,bufSize,NULL,0,&sndrcvinfo,&flags);
@@ -147,10 +147,10 @@ void Node::recvMsg(int fd)
     {
         std::string strMsg(buf);
         //Utils::log("                    got ", strMsg);
-        std::cout << "ssn : " << sndrcvinfo.sinfo_stream << std::endl;
-        std::cout << "ssn : " << sndrcvinfo.sinfo_ssn << std::endl;
-        std::cout << "PPID: " << sndrcvinfo.sinfo_ppid << std::endl;
-        //std::cout << "Flags: " << flags << std::endl;
+        std::cout << "stream : " << sndrcvinfo.sinfo_stream << std::endl;
+        //std::cout << "ssn : " << sndrcvinfo.sinfo_ssn << std::endl;
+        //std::cout << "PPID: " << sndrcvinfo.sinfo_ppid << std::endl;
+        std::cout << "Flags: " << flags << std::endl;
         msgHandler(strMsg);
     }
     else
