@@ -156,7 +156,7 @@ void Node::listenToNeighbors()
         {
             if(Utils::pollForFd(fd,1,POLLIN) > 0)
             {
-                //Utils::log("reading for fd", fd);
+                Utils::log("reading...");
                 recvMsg(fd); 
             }
         }
