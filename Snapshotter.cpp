@@ -21,6 +21,7 @@ Snapshotter::~Snapshotter()
 
 void Snapshotter::handleMsg(std::string msg)
 {
+    Utils::log("===================================");
     Utils::log("                         ",msg);
     auto splits = Utils::split(msg, APP_DELIM);
 
@@ -61,7 +62,6 @@ void Snapshotter::handleMsg(std::string msg)
         mMap.handleMsg(msg);
     }
 
-    Utils::log("===================================");
     rNode.releaseMessages();
 }
 
