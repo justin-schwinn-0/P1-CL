@@ -166,7 +166,7 @@ void Node::recvMsg(int fd)
         //std::cout << "ssn : " << sndrcvinfo.sinfo_ssn << std::endl;
         //std::cout << "PPID: " << sndrcvinfo.sinfo_ppid << std::endl;
         //std::cout << "             Flags: " << flags << std::endl;
-        msgHandler(strMsg);
+        //msgHandler(strMsg);
         std::thread handleThread(msgHandler, strMsg);
         handleThread.detach();
     }
