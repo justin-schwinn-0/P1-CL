@@ -35,7 +35,6 @@ void Connection::sendMsgNow(std::string msg)
         return;
     }
     bool sent = false;
-    //Utils::log("try send",msg);
     do
     {
         //std::this_thread::sleep_for(std::chrono::milliseconds(100));
@@ -49,13 +48,10 @@ void Connection::sendMsgNow(std::string msg)
         else
         {
             sent = true;
-            Utils::log("                         sent:" ,msg, "to ", mUid);
+            //Utils::log("                         sent:" ,msg, "to ", mUid);
         }
     }
     while(!sent);
-
-    //load bearing log statment
-    //Utils::log("sent ", msg);
 }
 
 void Connection::makeConnection()
