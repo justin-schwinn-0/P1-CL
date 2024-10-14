@@ -41,7 +41,6 @@ void MAP_Alg::becomeActive()
     if(!mActive && mMsgsSent <= mMaxNum )
     {
         mActive = true;
-        Utils::log(mActive,mMsgsSent, mMaxNum,"starting thread!!!!======================================");
         std::thread activeThrd(&MAP_Alg::active, this);
         activeThrd.detach();
     }
@@ -50,7 +49,7 @@ void MAP_Alg::becomeActive()
 
 void MAP_Alg::active()
 {
-    Utils::log("Active! sent:",mMsgsSent, "Max:",mMaxNum);
+    //Utils::log("Active! sent:",mMsgsSent, "Max:",mMaxNum);
     int msgsToSend;
 
     auto connections = rNode.getConnectedUids();
@@ -62,7 +61,7 @@ void MAP_Alg::active()
 
     int numMsgs = msgNum(rng);
     numMsgs = std::min(numMsgs, mMaxNum-mMsgsSent);
-    Utils::log("num sent:",numMsgs);
+    //Utils::log("num sent:",numMsgs);
     while(numMsgs > 0)
     {
         int uidIndex = picker(rng);
@@ -73,10 +72,9 @@ void MAP_Alg::active()
         mMsgsSent++;
         mVc.increment();
     }
-    Utils::log("Passive! sent:",mMsgsSent, "Max:",mMaxNum);
-    Utils::log("Passive! VC:",mVc.to_string());
+    //Utils::log("Passive! sent:",mMsgsSent, "Max:",mMaxNum);
+    //Utils::log("Passive! VC:",mVc.to_string());
     mActive = false;
-    Utils::log("stopping thread!!!!--------------------------------------");
 }
 
 bool MAP_Alg::isActive()
