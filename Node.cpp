@@ -116,6 +116,7 @@ void Node::acceptNeighbors()
         return;
     }
 
+    sleep(1);
     struct sockaddr_in client_addr;
     socklen_t addr_len = sizeof(client_addr);
 
