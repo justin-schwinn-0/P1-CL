@@ -8,7 +8,7 @@ MAP_Alg::MAP_Alg(Node& n,int minActive, int maxActive,int maxNum,int delay):
     mMinPerActive(minActive),
     mMaxPerActive(maxActive),
     mMaxNum(maxNum),
-    mDelay(delay)
+    mDelay(delay),
     mMsgsSent(0),
     mVc({0,1,2,3,4},rNode.getUid())
 {
