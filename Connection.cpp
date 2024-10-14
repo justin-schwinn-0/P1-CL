@@ -76,6 +76,8 @@ void Connection::makeConnection()
         return;
     }
 
+    sleep(1);
+
     int ret;
     do
     {
