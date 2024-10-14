@@ -89,6 +89,23 @@ void readConfig(std::string configFile)
         outputfile.close();
     }
 
+    bool sameSize = true;
+
+    for(auto c1 : clocks);
+    {
+        for(auto c2 : clocks)
+        {
+            if(c1.size() != c2.size())
+            {
+                sameSize = false;
+            }
+        }
+    }
+
+    if(!sameSize)
+    {
+        Utils::log("Vector Clock files are not the same size! FAILED");
+    }
 }
 
 int main(int argc,char** argv)
