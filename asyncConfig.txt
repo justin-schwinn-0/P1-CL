@@ -2,7 +2,7 @@
 0 dc32.utdallas.edu 5234
 1 dc33.utdallas.edu 4223
 2 dc34.utdallas.edu 4293
-3 dc35.utdallas.edu 3262
+3 dc35.utdallas.edu 3265
 4 dc36.utdallas.edu 6213
 1 4 
 0 2 3 
