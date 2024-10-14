@@ -1,5 +1,8 @@
 #include "Utils.h"
 
+#include <iostream>
+#include <fstream>
+#include <sstream>
 void readConfig(std::string configFile)
 {
     std::ifstream file(configFile) ;
