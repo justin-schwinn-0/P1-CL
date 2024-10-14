@@ -62,7 +62,7 @@ private:
 
     bool mReportActive = false; // false is passive
 
-    bool mIncomplete = true;
+    bool mComplete = false;
 
     int mChildren;
 

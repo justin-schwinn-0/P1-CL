@@ -191,8 +191,6 @@ void Snapshotter::convergeForReport()
             }
             else
             {
-                Utils::log("Protocol is done!");
-                rNode.flood(getCtrlStr(DONE));
             }
         }
         else
@@ -218,13 +216,20 @@ void Snapshotter::convergeForReport()
 
 void Snapshotter::handleDone()
 {
-    Utils::log("Protocol done!");
-    for(auto& str : mClockStorage)
+    if(!mComplete)
     {
-        Utils::log(str);
-    }
+        Utils::log("Protocol is done!");
+        for(auto& str : mClockStorage)
+        {
+            Utils::log(str);
+        }
 
-    //write the file of log storage
+        rNode.flood(getCtrlStr(DONE));
+
+        mComplete = true;
+
+        //write the file of log storage
+    }
 }
 
 bool Snapshotter::converge()
@@ -263,7 +268,7 @@ std::string Snapshotter::getCtrlStr(int ctrlMsgId)
 
 void Snapshotter::snapshotTimer()
 {
-    if(mIncomplete)
+    if(!mComplete)
     {
         std::this_thread::sleep_for(std::chrono::milliseconds(mSnapshotDelay));
         startSnapshot();
