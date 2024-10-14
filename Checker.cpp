@@ -78,10 +78,12 @@ void readConfig(std::string configFile)
         std::ifstream outputfile(fn);
 
         fileContents.push_back("");
-        while(outputfile,line)
+        while(std::getline(outputfile,line))
         {
             fileContents[uid] += line +"\n"; 
         }
+
+        outputfile.close();
     }
 
 
