@@ -82,18 +82,17 @@ void Connection::makeConnection()
     {
         sleep(2);
         ret = connect(sd,(struct sockaddr*)&serverAddress,sizeof(serverAddress));
-    }
-    while(ret == ECONNREFUSED);
 
-    if(ret < 0)
-    {
-        Utils::error("connect failed "+ hostname + " " + std::to_string(port));
+        if(ret < 0)
+        {
+            Utils::error("connect failed "+ hostname + " " + std::to_string(port));
+        }
+
     }
-    else
-    {
-        mCon = sd;
-        Utils::log("connection with",hostname,"fd:",sd);
-    }
+    while(ret != 0 );
+
+    mCon = sd;
+    Utils::log("connection with",hostname,"fd:",sd);
 }
 
 void Connection::queueMessage(std::string msg)
