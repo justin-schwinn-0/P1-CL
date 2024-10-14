@@ -11,6 +11,17 @@ VectorClock::VectorClock(std::vector<int> uids,int session):
     }
 }
 
+VectorClock::VectorClock(std::string str)
+{
+    auto clockVals = Utils::split(str,VC_DELIM);
+    int i = 0;
+
+    for(auto val : clockVals)
+    {
+        mClockMap[i] = Utils::strToInt(val);
+    }
+}
+
 VectorClock::~VectorClock()
 {
 }

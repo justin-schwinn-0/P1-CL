@@ -68,7 +68,7 @@ void readConfig(std::string configFile)
         }
     }
 
-    std::vector<std::string> fileContents;
+    std::vector<std::vector<VectorClock>> clocks(numNodes);
 
     for(int uid : uids)
     {
@@ -77,10 +77,11 @@ void readConfig(std::string configFile)
 
         std::ifstream outputfile(fn);
 
-        fileContents.push_back("");
+        int snapNum = 0;
         while(std::getline(outputfile,line))
         {
-            fileContents[uid] += line +"\n"; 
+            clocks[uid].push_back(line); 
+            Utils::log(clock)
         }
 
         outputfile.close();
