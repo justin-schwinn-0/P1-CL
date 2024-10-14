@@ -1,4 +1,5 @@
 #include "Utils.h"
+#include "VectorClock.h"
 
 #include <iostream>
 #include <fstream>
