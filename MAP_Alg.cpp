@@ -38,7 +38,7 @@ void MAP_Alg::handleMsg(std::string str)
 
 void MAP_Alg::becomeActive()
 {
-    if(!mActive && mMsgsSent < mMaxNum )
+    if(!mActive && mMsgsSent =< mMaxNum )
     {
         std::thread activeThrd(&MAP_Alg::active, this);
         activeThrd.detach();
