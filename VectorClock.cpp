@@ -34,7 +34,7 @@ void VectorClock::increment()
 
 void VectorClock::hasHappenBefore(VectorClock vc)
 {
-    auto otheClocks = vc.getClocks();
+    auto otherClocks = vc.getClocks();
     bool oneStrctlyAhead = false;
     bool allEqualOrAhead = true;
     for(auto it : mClockMap)
