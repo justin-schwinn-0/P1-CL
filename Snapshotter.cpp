@@ -165,7 +165,7 @@ void Snapshotter::convergeForChild()
         if(rNode.getUid() == 0)
         {
             initSnapshotProtocol();
-            //mMap.init();
+            mMap.init();
         }
     }
 }
