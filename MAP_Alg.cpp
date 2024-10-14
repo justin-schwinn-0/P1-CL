@@ -20,8 +20,6 @@ MAP_Alg::~MAP_Alg()
 
 void MAP_Alg::handleMsg(std::string str)
 {
-    //Utils::log(str);
-
     auto splitMsg = Utils::split(str,APP_DELIM);
 
     int otherUid =Utils::strToInt(splitMsg[0]);
@@ -51,7 +49,7 @@ void MAP_Alg::becomeActive()
 void MAP_Alg::active()
 {
     mActive = true;
-    //Utils::log("Active! sent:",mMsgsSent, "Max:",mMaxNum);
+    Utils::log("Active! sent:",mMsgsSent, "Max:",mMaxNum);
     int msgsToSend;
 
     auto connections = rNode.getConnectedUids();
@@ -63,7 +61,7 @@ void MAP_Alg::active()
 
     int numMsgs = msgNum(rng);
     numMsgs = std::min(numMsgs, mMaxNum-mMsgsSent);
-    //Utils::log("num sent:",numMsgs);
+    Utils::log("num sent:",numMsgs);
     while(numMsgs > 0)
     {
         int uidIndex = picker(rng);
@@ -74,8 +72,8 @@ void MAP_Alg::active()
         mMsgsSent++;
         mVc.increment();
     }
-    //Utils::log("Passive! sent:",mMsgsSent, "Max:",mMaxNum);
-    //Utils::log("Passive! VC:",mVc.to_string());
+    Utils::log("Passive! sent:",mMsgsSent, "Max:",mMaxNum);
+    Utils::log("Passive! VC:",mVc.to_string());
     mActive = false;
 }
 

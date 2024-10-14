@@ -71,7 +71,7 @@ void Snapshotter::handleMsg(std::string msg)
 
 void Snapshotter::startSnapshot()
 {
-    Utils::log("sending marks");
+    //Utils::log("sending marks");
     rNode.flood(getCtrlStr(MARKER));
     mConvergesRemaining = mChildren + 1;
     mReportActive = false;
@@ -121,7 +121,7 @@ void Snapshotter::handleRef(int uid)
 
 void Snapshotter::handleMarker(int uid)
 {
-    Utils::log("got mark from",uid);
+    //Utils::log("got mark from",uid);
     if(!anyRecording())
     {
         startSnapshot();
@@ -131,7 +131,7 @@ void Snapshotter::handleMarker(int uid)
 
     if(!anyRecording())
     {
-        Utils::log("own converge");
+        //Utils::log("own converge");
         convergeForReport();
     }
 }
@@ -152,7 +152,7 @@ void Snapshotter::handleAppMsg(int uid)
     if(mRecordingMap[uid])
     {
         mReportActive = true;
-        Utils::log("message in channel",uid,"!");
+        //Utils::log("message in channel",uid,"!");
     }
 }
 
@@ -173,7 +173,7 @@ void Snapshotter::convergeForChild()
 
 void Snapshotter::convergeForReport()
 {
-    Utils::log("try converge for report");
+    //Utils::log("try converge for report");
 
     bool contSnapshots = mReportActive || mMap.isActive();
     if(converge())
@@ -195,19 +195,19 @@ void Snapshotter::convergeForReport()
             {
                 Utils::log("protocol still active!");
                 rNode.sendTo(mParent,getCtrlStr(REPORT_ACT));
-                Utils::log("sent msg  ");
+                //Utils::log("sent msg  ");
             }
             else
             {
                 Utils::log("Protocol is passive");
                 rNode.sendTo(mParent,getCtrlStr(REPORT_PASS));
-                Utils::log("sent msg");
+                //Utils::log("sent msg");
             }
         }
 
         Utils::log(mMap.getVectorClock());
     }
-    Utils::log("exit converge for report");
+    //Utils::log("exit converge for report");
 }
 
 bool Snapshotter::converge()
