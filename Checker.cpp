@@ -78,7 +78,7 @@ void readConfig(std::string configFile)
 
 int main(int argc,char** argv)
 {
-    if(argc == 3)
+    if(argc == 2)
     {
         readConfig(argv[1]);
     }
