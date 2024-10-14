@@ -71,7 +71,7 @@ void readConfig(std::string configFile)
 
     for(int uid : uids)
     {
-        std::string fn = configFile+"-"+uid+".out";
+        std::string fn = configFile+"-"+std::to_string(uid)+".out";
         Utils::log("reading",fn);
     }
 }
