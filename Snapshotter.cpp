@@ -126,7 +126,7 @@ void Snapshotter::handleRef(int uid)
 
 void Snapshotter::handleMarker(int uid)
 {
-    //Utils::log("got mark from",uid);
+    Utils::log("got mark from",uid);
     if(!anyRecording())
     {
         startSnapshot();
@@ -136,7 +136,7 @@ void Snapshotter::handleMarker(int uid)
 
     if(!anyRecording())
     {
-        //Utils::log("own converge");
+        Utils::log("own converge");
         convergeForReport();
     }
 }
