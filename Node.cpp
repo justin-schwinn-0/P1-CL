@@ -129,6 +129,7 @@ void Node::acceptNeighbors()
         }
 
         openRcv.push_back(rxFd);
+        Utils::log("accepted connection:",rxFd);
     }
 
     Utils::log("accepted all neighbors");
