@@ -233,7 +233,7 @@ void Snapshotter::handleDone()
         mComplete = true;
 
         //write the file of log storage
-        std::ofstream out(configName+"-"+std::to_string(rNode.getUid()));
+        std::ofstream out(configName+"-"+std::to_string(rNode.getUid())+".out");
         out << fileContents;
         out.close();
     }
