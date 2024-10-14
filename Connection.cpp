@@ -79,7 +79,6 @@ void Connection::makeConnection()
     int ret;
     do
     {
-        sleep(1);
         ret = connect(sd,(struct sockaddr*)&serverAddress,sizeof(serverAddress));
     }
     while(ret == ECONNREFUSED);
