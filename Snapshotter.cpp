@@ -191,6 +191,7 @@ void Snapshotter::convergeForReport()
             }
             else
             {
+                handleDone();
             }
         }
         else
