@@ -51,6 +51,9 @@ void Snapshotter::handleMsg(std::string msg)
             case REPORT_PASS:
                 handleReport(uid,false);
                 break;
+            case DONE:
+                handleDone();
+                break;
             default:
                 Utils::log("Unknown message!",msgId);
                 break;
@@ -80,6 +83,8 @@ void Snapshotter::startSnapshot()
     {
         mRecordingMap[uid] = true;
     }
+
+    mClockStorage.push_back(mMap.getVectorClock());
     
     std::this_thread::sleep_for(std::chrono::milliseconds(50));
 }
@@ -187,6 +192,7 @@ void Snapshotter::convergeForReport()
             else
             {
                 Utils::log("Protocol is done!");
+                rNode.flood(getCtrlStr(DONE));
             }
         }
         else
@@ -208,6 +214,17 @@ void Snapshotter::convergeForReport()
         Utils::log(mMap.getVectorClock());
     }
     //Utils::log("exit converge for report");
+}
+
+void Snapshotter::handleDone()
+{
+    Utils::log("Protocol done!");
+    for(auto& str : mClockStorage)
+    {
+        Utils::log(str);
+    }
+
+    //write the file of log storage
 }
 
 bool Snapshotter::converge()

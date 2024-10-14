@@ -14,7 +14,9 @@ const int CHILD = 1002;
 const int REF = 1003;
 
 const int REPORT_ACT = 1004;
-const int REPORT_PASS = 1025;
+const int REPORT_PASS = 1005;
+
+const int DONE = 1006;
 
 
 class Snapshotter
@@ -38,6 +40,7 @@ public:
     void handleRef(int uid);
     void handleMarker(int uid);
     void handleReport(int uid,bool isActive);
+    void handleDone();
     void handleAppMsg(int uid);
     bool converge();
     void convergeForChild();
@@ -62,6 +65,8 @@ private:
     bool mIncomplete = true;
 
     int mChildren;
+
+    std::vector<std::string> mClockStorage;
 };
 
 #endif
