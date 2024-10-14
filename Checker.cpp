@@ -41,11 +41,6 @@ void readConfig(std::string configFile)
     auto firstLine = Utils::split(lines[0]," ");
 
     int numNodes;
-    int minPerActive;
-    int maxPerActive;
-    int minSendDelay;
-    int snapshotDelay;
-    int maxNumber;
     if(firstLine.size() != 6)
     {
         // if length of the first line isn't 1,
@@ -58,20 +53,26 @@ void readConfig(std::string configFile)
         numNodes = Utils::strToInt(firstLine[0]);
     }
 
+    std::vector<int> uids;
     for(int i = 1; i < numNodes+1;i++)
     {
         auto splitNode = Utils::split(lines[i]," ");
 
         if(splitNode.size() == 3)
         {
-            std::istringstream uidSS(splitNode[0]); 
-
+            uids.push_back(Utils::strToInt(splitNode[0])); 
         }
         else
         {
             Utils::log( "node Line " , i , " is invalid" );
         }
-        
+    }
+
+
+    for(int uid : uids)
+    {
+        std::string fn = configFile+"-"+uid+".out";
+        Utils::log("reading",fn);
     }
 }
 
