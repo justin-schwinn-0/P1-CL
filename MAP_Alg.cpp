@@ -40,6 +40,7 @@ void MAP_Alg::becomeActive()
 {
     if(!mActive && mMsgsSent <= mMaxNum )
     {
+        Utils::log("starting thread!!!!======================================");
         std::thread activeThrd(&MAP_Alg::active, this);
         activeThrd.detach();
     }
@@ -75,6 +76,7 @@ void MAP_Alg::active()
     Utils::log("Passive! sent:",mMsgsSent, "Max:",mMaxNum);
     Utils::log("Passive! VC:",mVc.to_string());
     mActive = false;
+    Utils::log("stopping thread!!!!--------------------------------------");
 }
 
 bool MAP_Alg::isActive()
