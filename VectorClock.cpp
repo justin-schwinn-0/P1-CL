@@ -32,7 +32,7 @@ void VectorClock::increment()
     mClockMap[mSession]++;
 }
 
-void VectorClock::hasHappenBefore(VectorClock vc)
+bool VectorClock::hasHappenBefore(VectorClock vc)
 {
     auto otherClocks = vc.getClocks();
     bool oneStrictlyAhead = false;

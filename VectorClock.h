@@ -19,7 +19,7 @@ public:
 
     void increment();
 
-    void hasHappenBefore(VectorClock vc);
+    bool hasHappenBefore(VectorClock vc);
 
     std::string to_string();
 
