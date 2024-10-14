@@ -116,12 +116,12 @@ void Node::acceptNeighbors()
         return;
     }
 
-    sleep(1);
     struct sockaddr_in client_addr;
     socklen_t addr_len = sizeof(client_addr);
 
     while(openRcv.size() < mNeighbors.size())
     {
+        sleep(2);
         int rxFd = accept(mListenFd, (struct sockaddr*)&client_addr,&addr_len);
 
         if(rxFd < 0)
