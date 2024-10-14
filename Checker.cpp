@@ -91,9 +91,9 @@ void readConfig(std::string configFile)
 
     bool sameSize = true;
 
-    for(auto c1 : clocks);
+    for(auto& c1 : clocks)
     {
-        for(auto c2 : clocks)
+        for(auto& c2 : clocks)
         {
             if(c1.size() != c2.size())
             {
