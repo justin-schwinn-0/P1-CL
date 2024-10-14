@@ -234,6 +234,7 @@ bool Snapshotter::anyRecording()
 
 void Snapshotter::createTree()
 {
+    std::this_thread::sleep_for(std::chrono::milliseconds(3000));
     rNode.flood(getCtrlStr(PARENT));
     mConvergesRemaining = rNode.getNeighborsSize();
 }
