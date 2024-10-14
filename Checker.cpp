@@ -89,11 +89,6 @@ void readConfig(std::string configFile)
         outputfile.close();
     }
 
-
-    for(auto& str : fileContents)
-    {
-        std::cout << str<< std::endl;
-    }
 }
 
 int main(int argc,char** argv)
