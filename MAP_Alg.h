@@ -15,7 +15,7 @@ const int ACTIVE = 500;
 class MAP_Alg
 {
 public:
-    MAP_Alg(Node& n,int minActive, int maxActive,int maxNum);
+    MAP_Alg(Node& n,int minActive, int maxActive,int maxNum,int delay);
     ~MAP_Alg();
 
     void init();
@@ -38,6 +38,7 @@ private:
     bool mActive = false;
     int mMinPerActive;
     int mMaxPerActive;
+    int mDelay;
 
     int mMaxNum;
 
