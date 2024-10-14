@@ -25,11 +25,23 @@ set(Headers
     Snapshotter.h
 )
 
+set(ChkSources
+    Checker.cpp
+    Utils.cpp
+    VectorClock.cpp
+)
+
+set(ChkHeaders
+    Utils.h
+    VectorClock.h
+)
+
 find_library(SCTP_LIB libsctp.so)
 #find_library(THREAD_LIB libpthread.so)
 
 
 add_executable(${PROJECT_NAME} ${Sources} ${Headers})
+add_executable(Checker ${ChkSources} ${ChkHeaders})
 target_link_libraries(${PROJECT_NAME} PRIVATE ${SCTP_LIB})
 target_link_libraries(${PROJECT_NAME} PRIVATE Threads::Threads)
 #target_link_libraries(${PROJECT_NAME} PRIVATE ${THREAD_LIB})
