@@ -116,11 +116,12 @@ void Node::acceptNeighbors()
         return;
     }
 
-
+    struct sockaddr_in client_addr;
+    socklen_t addr_len = sizeof(client_addr);
 
     while(openRcv.size() < mNeighbors.size())
     {
-        int rxFd = accept(mListenFd, (struct sockaddr*)NULL,NULL);
+        int rxFd = accept(mListenFd, (struct sockaddr*)client_addr,addr_len);
 
         if(rxFd < 0)
         {
@@ -129,7 +130,9 @@ void Node::acceptNeighbors()
         }
 
         openRcv.push_back(rxFd);
-        Utils::log("accepted connection:",rxFd);
+        char client_ip[INET_ADDRSTRLEN];
+        inet_ntop(AF_INET, &(client_addr.sin_addr), client_ip, INET_ADDRSTRLEN);
+        Utils::log("accepted connection:",client_ip);
     }
 
     Utils::log("accepted all neighbors");
