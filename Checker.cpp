@@ -81,8 +81,9 @@ void readConfig(std::string configFile)
         int snapNum = 0;
         while(std::getline(outputfile,line))
         {
-            clocks[uid].push_back(line); 
-            Utils::log(clock)
+            VectorClock vc(line);
+            clocks[uid].push_back(vc); 
+            Utils::log(vc.to_string());
         }
 
         outputfile.close();
