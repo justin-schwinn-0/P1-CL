@@ -86,5 +86,6 @@ struct NodeInfo
     int snapshotDelay;
     int maxNumber;
     Node n;
+    std::string configName;
 };
 #endif

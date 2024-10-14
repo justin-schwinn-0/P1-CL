@@ -66,6 +66,7 @@ private:
 
     int mChildren;
 
+    std::string configName;
     std::vector<std::string> mClockStorage;
 };
 

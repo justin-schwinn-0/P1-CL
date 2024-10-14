@@ -1,5 +1,7 @@
 #include "Snapshotter.h"
+
 #include <thread>
+#include <fstream>
 
 Snapshotter::Snapshotter(NodeInfo& ni):
     mMap(   ni.n,
@@ -10,7 +12,8 @@ Snapshotter::Snapshotter(NodeInfo& ni):
     rNode(ni.n),
     mParent(-1),
     mSnapshotDelay(ni.snapshotDelay),
-    mChildren(0)
+    mChildren(0),
+    configName(ni.configName)
 {
 
 }
@@ -219,9 +222,10 @@ void Snapshotter::handleDone()
     if(!mComplete)
     {
         Utils::log("Protocol is done!");
+        std::string fileContents = "";
         for(auto& str : mClockStorage)
         {
-            Utils::log(str);
+            fileContents+=str+"\n";
         }
 
         rNode.flood(getCtrlStr(DONE));
@@ -229,6 +233,9 @@ void Snapshotter::handleDone()
         mComplete = true;
 
         //write the file of log storage
+        std::ofstream out(configName+"-"+std::to_string(rNode.getUid()));
+        out << fileContents;
+        out.close();
     }
 }
 
