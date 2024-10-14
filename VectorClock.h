@@ -19,11 +19,14 @@ public:
 
     void increment();
 
-    void compare(int session);
+    void hasHappenBefore(VectorClock vc);
 
     std::string to_string();
 
     void update(int sender, std::string str);
+
+    std::map<int,int> getClocks()
+    { return mClockMap; }
 
 private:
 

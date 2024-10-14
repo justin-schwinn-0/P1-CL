@@ -32,9 +32,31 @@ void VectorClock::increment()
     mClockMap[mSession]++;
 }
 
-void VectorClock::compare(int session)
+void VectorClock::hasHappenBefore(VectorClock vc)
 {
-    // do the compare
+    auto otheClocks = vc.getClocks();
+    bool oneStrctlyAhead = false;
+    bool allEqualOrAhead = true;
+    for(auto it : mClockMap)
+    {
+        int index = it.first;
+
+        if(mClockMap[index] >= otherClocks[index])
+        {
+            // nothing yet
+        }
+        else if(mClockMap[index] > otherClocks[index])
+        {
+            oneStrictlyAhead = true;
+        }
+        else
+        {
+            allEqualOrAhead = false;
+            break;
+        }
+    }
+
+    return allEqualOrAhead && oneStrictlyAhead;
 }
 
 std::string VectorClock::to_string()

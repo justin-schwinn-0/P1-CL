@@ -106,6 +106,25 @@ void readConfig(std::string configFile)
     {
         Utils::log("Vector Clock files are not the same size! FAILED");
     }
+
+    for(int i = 0 ; i < clocks[0].size(); i++)
+    {
+        for(auto& c1 : clocks)
+        {
+            for(auto& c2 : clocks)
+            {
+                if(c1.hasHappenBefore(c2))
+                {
+                    Utils::log("VectorClocks contain happen before. FAILED");
+                }
+                else
+                {
+                    Utils::log("VectorClocks are concurrent");
+                }
+            }
+        }
+    }
+
 }
 
 int main(int argc,char** argv)
