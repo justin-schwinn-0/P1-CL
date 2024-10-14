@@ -196,6 +196,7 @@ int main(int argc,char** argv)
         int uid = std::stoi(argv[2]);
 
         auto nodeData = readConfig(argv[1],uid);
+        nodeData.configName = argv[1];
 
         runAlg(nodeData);
     }
