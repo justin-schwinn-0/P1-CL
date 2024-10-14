@@ -215,7 +215,6 @@ void Node::recvMsg(int fd)
         //std::cout << "PPID: " << sndrcvinfo.sinfo_ppid << std::endl;
         //std::cout << "             Flags: " << flags << std::endl;
         auto splits = Utils::split(strMsg,MSG_DELIM);
-        Utils::printVector(splits);
         for(std::string str : splits)
         {
             msgHandler(str);
