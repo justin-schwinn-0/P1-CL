@@ -19,6 +19,7 @@ VectorClock::VectorClock(std::string str)
     for(auto val : clockVals)
     {
         mClockMap[i] = Utils::strToInt(val);
+        i++;
     }
 }
 
