@@ -207,8 +207,6 @@ void Snapshotter::convergeForReport()
                 //Utils::log("sent msg");
             }
         }
-
-        Utils::log(mMap.getVectorClock());
     }
     //Utils::log("exit converge for report");
 }
