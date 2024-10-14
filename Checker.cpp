@@ -68,11 +68,26 @@ void readConfig(std::string configFile)
         }
     }
 
+    std::vector<std::string> fileContents;
 
     for(int uid : uids)
     {
         std::string fn = configFile+"-"+std::to_string(uid)+".out";
         Utils::log("reading",fn);
+
+        std::ifstream outputfile(fn);
+
+        fileContents.push_back("");
+        while(outputfile,line)
+        {
+            fileContents[uid] += line +"\n"; 
+        }
+    }
+
+
+    for(auto& str : fileContents)
+    {
+        std::cout << str<< std::endl;
     }
 }
 
