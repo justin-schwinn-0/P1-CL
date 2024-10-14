@@ -113,7 +113,7 @@ void readConfig(std::string configFile)
         {
             for(auto& c2 : clocks)
             {
-                if(c1.hasHappenBefore(c2))
+                if(c1[i].hasHappenBefore(c2[i]))
                 {
                     Utils::log("VectorClocks contain happen before. FAILED");
                 }
